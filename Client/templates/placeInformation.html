@@ -1,0 +1,99 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{place.name}}<span class="close" ng-click="ok()">X</span></h3>
+    <h4 ng-show="placeRating" class="place-rating">
+        <uib-rating class="rating-stars" ng-model="placeRating" max="5" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null"></uib-rating>
+        <b>{{numOfRatings}} reviews ({{placeRating}}/5.0)</b>
+    </h4>
+</div>
+
+<div class="modal-body place-info-sec" ng-init="init()">
+    <div class="tabbable">
+        <ul class="nav nav-tabs" id="headerTabs">
+            <li class="active"><a href="#Main" ng-click="updateTab('generalTab')" id="generalTab" data-toggle="tab">General</a></li>
+            <li><a href="#Photos" ng-click="updateTab('photoTab')" id="photoTab" data-toggle="tab" ng-show="isPhotoExist">Photos<span ng-show="place.imgSource.length > 0">({{place.imgSource.length}})</span></a></li>
+            <li><a href="#Reviews" ng-click="updateTab('ratingTab')" id="ratingTab" data-toggle="tab">Reviews<span ng-show="placeReviews.length > 0">({{placeReviews.length}})</span></a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="Main">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h5 ng-show="place.desc"><b>Description: </b>{{place.desc}}</h5>
+                        <h5><b>Address: </b>{{place.address}}</h5>
+                        <h5 ng-show="place.phoneNumber"><b>Phone Number: </b>{{place.phoneNumber}}</h5>
+
+                        <h5><b>Links: </b></h5>
+                        <div ng-repeat="link in place.links">
+                            <a class="col-sm-4" ng-href={{link.URL}} ng-show="link.URL" target="_blank">
+                                <b>{{link.name}}</b>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="place_map col-sm-5" ng-show="isLocationExist">
+                        <div class="Flexible-container">
+                            <iframe ng-src='{{getIframeSrc(place)}}' class="responsiveIframe">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane" id="Photos" ng-show="isPhotoExist">
+                <div class="form-group place-img-container center">
+                    <image-carousel image-sources="place.imgSource">
+                </div>
+            </div>
+            <div class="tab-pane" id="Reviews">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <form name="addNewReviewFrm" class="review-div" ng-show="!isSubmited">
+                            <div class="form-group">
+                                <label class="add-review-label col-sm-7">Your review:</label>
+                            </div>
+                            <div class="form-group rating-stars-div">
+                                <uib-rating class="rating-stars" ng-model="newReview.rating" max="5" readonly="false" on-hover="hoveringOver(value)" on-leave="overStar = null"></uib-rating>
+                            </div>
+                            <div class="form-group">
+                                <input id="name" class="form-control" ng-model="newReview.authorName" placeholder="Your name" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="reviewText" class="form-control" rows="3" ng-model="newReview.text" placeholder="Write your review here"></textarea>
+                            </div>
+
+                            <a ng-click="addNewReview()" class="send-review-btn btn btn-primary" ng-disabled="addNewReviewFrm.$invalid || isSubmited">Send Review</a>
+                        </form>
+                        <div class="thanks-msg" ng-show="isSubmited"><strong>Thanks for giving the review!</strong></div>
+                    </div>
+                    <div class="col-sm-6" ng-show="placeReviews">
+                        <div class="reviews-sec">
+                            <label class="hidden-xs"> Reviews:</label>
+
+                            <div class="reviews-element">
+                                <div class="row" ng-repeat="review in placeReviews">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <strong>{{review.authorName}}</strong> <span class="review-rating text-muted">
+                                                        <uib-rating class="rating-stars" ng-model="review.rating" max="5" readonly="true" on-hover="hoveringOver(value)" on-leave="overStar = null"></uib-rating></span>
+                                        </div>
+                                        <div class="panel-body">
+                                            {{review.text}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="modal-footer">
+    <label class="last-updated col-sm-7">Last Updated: {{place.updated_at | date:'medium'}}</label>
+    <button id="addPhotoBtn" class="btn btn-primary" type="file" ngf-select="uploadFiles()" ng-model="placePhoto" file-model="placePhoto" accept="image/*">
+        Add Photo
+    </button>
+    <button id="addLinkBtn" ng-click="addLinks()" class="btn btn-primary">
+        Add Link
+    </button>
+</div>

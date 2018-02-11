@@ -1,0 +1,41 @@
+<div id="generalInfoTab" class="tab-pane fade">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label class="col-sm-2 col-xs-12 control-label" for="placeName">Place Name:*</label>
+
+            <div class="col-sm-9">
+                <input name="placeName" id="placeName" class="form-control" data-ng-model="newPlaceInfo.name"
+                       placeholder="Place Name" required> </input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  col-xs-12 control-label" for="description">Description:</label>
+
+            <div class="col-sm-9">
+                        <textarea id="description" class="form-control" rows="2" data-ng-model="newPlaceInfo.desc"
+                                  placeholder="Place Description"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 col-xs-12 control-label" for="placeLevel">Place Level:*</label>
+
+            <div class="col-sm-9">
+                <select name="placeLevel" id="placeLevel" class="form-control" data-ng-model="placeLevel"
+                        data-ng-options="p.text for p in placeLevels | orderBy : 'p.id'" required></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2  col-xs-12 control-label control-label">Place Category:</label>
+
+            <div name="placeCategory" class="col-sm-9 text-left">
+                        <span data-ng-repeat="category in placeCategories">
+                            <label class="checkbox-inline" for="{{category.categoryId}}">
+                                <input id="{{category.categoryId}}" type="checkbox" data-ng-model="placeCategory[category.categoryId]" name="categories" value={{category.categoryId}}/>
+                                {{category.categoryName}}
+                            </label>
+                        </span>
+            </div>
+        </div>
+        <div class="form-group"><label class="required-info text-danger col-md-12 col-xs-12 col-xs-offset-1">* Required</label></div>
+    </div>
+</div>

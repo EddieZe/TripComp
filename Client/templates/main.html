@@ -1,0 +1,74 @@
+<div ng-controller="mainController" ng-app="TripComp" ng-init="initPage()">
+    <div class="page-header text-center"><h1>Plan Your Business Trip</h1></div>
+    <form class="form-horizontal" name="siteSelectionForm" novalidate>
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h2 class="panel-title">Select Location</h2></div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <select-loaction loc="siteLocation"/>
+                </div>
+                <div class="form-group">
+                    <a ng-click="getPlaces(siteLocation.country.countryId, siteLocation.city.cityId, siteLocation.site.siteId)"
+                       class="btn btn-primary" target="_blank" ng-disabled="!siteLocation.site">Search for Places</a>
+                </div>
+                <span>* To add new Amdocs site please go to "Add New Site" Tab</span>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default block site-info" ng-show="siteLocation.site">
+                <div class="col-md-12">
+                    <h3>{{siteLocation.site.siteName}}</h3>
+                    <h4>{{siteLocation.site.address}}</h4>
+                </div>
+
+                <div class="sitePic col-md-12">
+                    <img ng-src={{siteLocation.site.imgSource}} alt="Picture" ng-show="siteLocation.site.imgSource">
+                </div>
+                <div class="site_map col-md-11" ng-show="siteLocation.site.isHasCord">
+                    <div class="Flexible-container">
+                        <iframe ng-src='{{getIframeSrc(siteLocation.site)}}' class="responsiveIframe">
+                        </iframe>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-xs-offset-4" ng-show="siteLocation.site && !siteLocation.site.imgSource">
+                    <button type="file" ngf-select="uploadFiles()" ng-model="sitePhoto" class="btn btn-primary" file-model="sitePhoto" accept="image/*">
+                        Add Site Image
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="accordion panel-group" ng-show="isTableFilled" ng-repeat="place in placesByCategories">
+                <div class="panel panel-default">
+                    <div class="panel-heading place-image-block">
+                        <h4 class="panel-title" ng-click="isCollapsed = !isCollapsed" data-toggle="collapse" data-target="{{'#place' + place.categoryId}}">
+                            <a class="accordion-toggle">{{place.categoryName}}</a>
+                            <span ng-class="{'glyphicon glyphicon-chevron-down': !isCollapsed, 'glyphicon glyphicon-chevron-right': isCollapsed}"></span>
+                            <span class="has-new-place-sign" ng-show="place.isHasNew"><img ng-src="/resources/images/new-ribbon.png"></span>
+                        </h4>
+                    </div>
+                    <div id="{{'place' + place.categoryId}}" class="thumbnail-container panel-collapse collapse">
+                        <div class="block places-icons">
+                            <div class="col-sm-4 col-lg-4 col-md-4 place" ng-repeat="placeWidg in place.placeInfo"
+                                 ng-click="openPlaceInfoModal(placeWidg)">
+                                <div class="thumbnail place-image-block">
+
+                                    <img class="place-front-img" ng-src={{placeWidg.mainPhoto}} alt="Picture">
+                                    <img class="new-place-sign" ng-show="placeWidg.isNew" ng-src="/resources/images/new-ribbon-en.png">
+
+                                    <div class="place-front-desc">
+                                        <b>{{placeWidg.name}}</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

@@ -1,0 +1,131 @@
+<div data-ng-controller="AddSiteController" data-ng-app="TripComp" data-ng-init="initPage()">
+    <div class="page-header text-center"><h1>Add New Site</h1></div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <ul class="nav nav-tabs nav-justified">
+                    <li id="addressSearch" class="active-head"><a data-ng-click="goToTab('addressTab')">Search Address</a></li>
+                    <li id="generalInfoTabHead"><a data-ng-click="goToTab('generalInfoTab')">General Information</a></li>
+                    <li id="imageUploadTabHead"><a data-ng-click="goToTab('imageUploadTab')">Upload site image</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div data-ng-show="currTab == 'addressTab'" id="locationTab">
+                        <form name="searchAddressForm" class="form-horizontal" enctype="multipart/form-data" novalidate>
+                            <div class="row newSiteForm">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label for="siteAddress" class="control-label col-md-2 col-xs-12">Site Address:*</label>
+                                        <div class="col-md-7 col-xs-12">
+                                            <input name="siteAddress" id="siteAddress" class="form-control"
+                                                   data-ng-model="searchAddress"
+                                                   placeholder="Site Address" required/>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <a data-ng-click="verifyAddress()" class="btn btn-primary" data-ng-disabled="!searchAddress">Verify</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-ng-show="currTab == 'generalInfoTab'" id="generalInfoTab">
+                        <form name="addSiteForm" class="form-horizontal" enctype="multipart/form-data" novalidate>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label for="siteName" class="control-label col-md-4 col-xs-12">Site Name:*</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input name="siteName" id="siteName" class="form-control" data-ng-model="newSiteInfo.siteName" placeholder="Site Name" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="lblFullAddress" for="fullAddress" class="control-label col-md-4 col-xs-12">Full Address:*</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input id="fullAddress" class="form-control" data-ng-model="newSiteInfo.siteAddress" placeholder="Full Address" data-ng-disabled="isAddressValidated"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="lblCountryName" for="countryName" class="control-label col-md-4 col-xs-12">Country:*</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input id="countryName" class="form-control" data-ng-model="newSiteInfo.countryName" placeholder="Country Name" data-ng-disabled="isAddressValidated"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="lblState" for="state" class="control-label col-md-4 col-xs-12">State:</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input id="state" class="form-control" data-ng-model="newSiteInfo.state" placeholder="State" data-ng-disabled="isAddressValidated">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="lblCityName" for="cityName" class="control-label col-md-4 col-xs-12">City:*</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input id="cityName" class="form-control" data-ng-model="newSiteInfo.cityName" placeholder="City Name" data-ng-disabled="isAddressValidated">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label id="lblTimeZone" for="timeZone" class="control-label col-md-4 col-xs-12">Time Zone:</label>
+                                        <div class="col-md-8 col-xs-12">
+                                            <input id="timeZone" class="form-control" data-ng-model="newSiteInfo.timeZone" placeholder="Time Zone" data-ng-show="isAddressValidated" data-ng-disabled="isAddressValidated"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="latitude" class="control-label col-md-4 col-xs-12">Lat, Lng:</label>
+                                        <div class="row">
+                                            <div class="col-md-7 col-xs-12">
+                                                <div class="col-sm-5 cord-input">
+                                                    <input name="latitude" id="latitude" class="form-control"
+                                                           data-ng-model="newSiteInfo.googleInfo.lat" data-ng-disabled="isAddressValidated"
+                                                           placeholder="Latitude"/>
+                                                </div>
+                                                <div class="col-sm-1">,</div>
+                                                <div class="col-sm-5 cord-input">
+                                                    <input name="longitude" id="longitude" class="form-control"
+                                                           data-ng-model="newSiteInfo.googleInfo.lng" data-ng-disabled="isAddressValidated"
+                                                           placeholder="Longitude"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="required-info text-danger col-md-12 col-xs-12">* Required</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12" ng-show="isAddressValidated">
+                                <div class="choosen_place_map">
+                                    <div class="Flexible-container">
+                                        <iframe class="responsiveIframe" data-ng-src='{{getIframeSrc(newSiteInfo)}}'>
+                                        </iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div data-ng-show="currTab == 'imageUploadTab'" id="imageUploadTab">
+                        <form name="addSitePhotoForm" class="form-horizontal" enctype="multipart/form-data" novalidate>
+                            <div class="col-xs-12">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <button type="file" ngf-select data-ng-model="sitePhoto" class="btn btn-primary"
+                                                file-model="sitePhoto" accept="image/*">Select Site Image
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img ngf-src="sitePhoto" ng-show="sitePhoto" class="previewImg">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="btn-navigation">
+                        <a data-ng-click="goToTab(prevPage)" data-ng-show="prevPage" class="btn btn-primary">Back</a>
+                        <a data-ng-click="goToTab(nextPage)" data-ng-show="nextPage" class="btn btn-primary" data-ng-disabled="(currTab === 'addressTab' && !isAddressValidated) || (currTab === 'generalInfoTab' && addSiteForm.$invalid)">Next</a>
+                        <a data-ng-click="addNewSite()" data-ng-show="!nextPage" class="btn btn-primary" data-ng-disabled="addSiteForm.$invalid">Finish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

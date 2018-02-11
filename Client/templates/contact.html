@@ -1,0 +1,68 @@
+<div data-ng-controller="ContactController">
+    <div class="page-header text-center"><h1>Contact us</h1></div>
+    <form name="contactUsFrm" class="form-horizontal" method="post" nonvalidate>
+
+        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">
+                                <i class="glyphicon glyphicon-user contactUs colorGreen"
+                                   data-ng-show="!contactUsFrm.fullName.$invalid"></i>
+                                <i class="glyphicon glyphicon-user contactUs colorRed"
+                                   data-ng-show="contactUsFrm.fullName.$invalid"></i>
+                            </span>
+
+            <div class="col-md-6">
+                <input id="fullName" name="fullName" type="text" placeholder="Full Name"
+                       class="form-control" data-ng-model="message.fullName" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">
+                                <i class="glyphicon glyphicon-envelope contactUs colorGreen"
+                                   data-ng-show="!contactUsFrm.email.$invalid"></i>
+                                <i class="glyphicon glyphicon-envelope contactUs colorRed"
+                                   data-ng-show="contactUsFrm.email.$invalid"></i>
+                            </span>
+
+            <div class="col-md-6">
+                <input id="email" name="email" type="email" placeholder="Email Address"
+                       class="form-control" data-ng-model="message.email" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">
+                                <i class="glyphicon glyphicon-phone-alt contactUs colorGreen"></i>
+                            </span>
+
+            <div class="col-md-6">
+                <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control"
+                       data-ng-model="message.phone">
+            </div>
+        </div>
+
+        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center">
+                                <i class="glyphicon glyphicon-text-width contactUs colorGreen"
+                                   data-ng-show="!contactUsFrm.message.$invalid"></i>
+                                <i class="glyphicon glyphicon-text-width contactUs colorRed"
+                                   data-ng-show="contactUsFrm.message.$invalid"></i>
+                            </span>
+
+            <div class="col-md-6">
+                            <textarea class="form-control" id="message" name="message"
+                                      placeholder="Enter your message for us here."
+                                      rows="5" data-ng-model="message.message" required></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12 text-center">
+                <a class="btn btn-primary" data-ng-click="sendMessage()"
+                   ng-disabled="contactUsFrm.$invalid">Submit</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+</div>

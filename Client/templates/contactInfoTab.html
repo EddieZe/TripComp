@@ -1,0 +1,81 @@
+<div id="contactInfoTab" class="tab-pane fade">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label class="col-sm-2 col-xs-12 control-label" for="address">Address:</label>
+
+            <div class="col-sm-9">
+                <input id="address" class="form-control" data-ng-model="newPlaceInfo.address"
+                       placeholder="Address">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-xs-12 control-label" for="phoneNumber">Phone Number:</label>
+
+            <div class="col-sm-9">
+                <input name="phoneNumber" id="phoneNumber" class="form-control"
+                       data-ng-model="newPlaceInfo.phoneNumber"
+                       placeholder="Phone Number (+1-234-567-890)">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 col-xs-12 control-label">Google Info:</label>
+
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label class="col-sm-4 col-xs-12 control-label">Latitude, Longitude:</label>
+                            <input name="latitude" placeholder="Latitude" class="input-sm col-sm-3"
+                                   data-ng-model="newPlaceInfo.googleInfo.locationInfo.lat"/>
+                            <span class="col-sm-1"> , </span>
+                            <input name="longitude" placeholder="Longitude" class="input-sm col-sm-3"
+                                   data-ng-model="newPlaceInfo.googleInfo.locationInfo.lng"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label class="col-sm-4 col-xs-12 control-label">Google Place Id:</label>
+                            <input name="googlePlaceId" placeholder="Google Place Id" class="input-sm col-sm-7"
+                                   data-ng-model="newPlaceInfo.googleInfo.googlePlaceId"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <small class="text-danger" data-ng-show="addNewPlaceFrm.webSiteURL.$invalid">Not a valid URL</small>
+            <label class="col-sm-2 col-xs-12 control-label" for="webSiteURL">Web site URL:</label>
+
+            <div class="col-sm-9">
+                <input name="webSiteURL" type="url" id="webSiteURL" class="form-control"
+                       data-ng-model="newPlaceInfo.siteURL" placeholder="http://">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <small class="text-danger" data-ng-show="addNewPlaceFrm.tripAdvisorURL.$invalid">Not a valid URL
+            </small>
+            <label class="col-sm-2 col-xs-12 control-label" for="tripAdvisorURL">TripAdvisor URL:</label>
+
+            <div class="col-sm-9">
+                <input name="tripAdvisorURL" type="url" id="tripAdvisorURL" class="form-control"
+                       data-ng-model="newPlaceInfo.tripAdvisorURL" placeholder="http://">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <small class="text-danger" data-ng-show="addNewPlaceFrm.wikiURL.$invalid">Not a valid URL</small>
+            <label class="col-sm-2  col-xs-12 control-label" for="wikiURL">Wiki URL:</label>
+
+            <div class="col-sm-9">
+                <input name="wikiURL" type="url" id="wikiURL" class="form-control"
+                       data-ng-model="newPlaceInfo.wikiURL" placeholder="http://">
+            </div>
+        </div>
+    </div>
+</div>
