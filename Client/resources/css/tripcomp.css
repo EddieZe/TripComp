@@ -1,0 +1,654 @@
+/* Elements */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: fixed rgba(129, 129, 129, 1);
+}
+
+.cont-wrapper {
+    min-height: 100%;
+    position: relative;
+}
+
+.footer {
+    padding-top: 10px;
+    color: white;
+    background-color: #222;
+    border-top: 0.5em solid #00C0FF;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.header {
+    color: #36A0FF;
+    font-size: 27px;
+    padding: 10px;
+}
+
+.bigicon {
+    font-size: 35px;
+    color: #36A0FF;
+}
+
+input {
+    color: black;
+}
+
+nav.mainHeader {
+    height: 80px;
+    margin: 0;
+    border-bottom: 0.5em solid #00c0ff;
+}
+
+a.navbar-brand {
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ID's */
+#carousel-generic .right.carousel-control, #carousel-generic .left.carousel-control {
+    display: none;
+}
+
+.logoColorDox {
+    color: #afbd37;
+}
+
+.logoColorTrip {
+    color: #00c0ff;
+}
+
+/* Classes */
+.headerImage {
+    height: 33%;
+}
+
+.logo {
+    height: 100%;
+}
+
+.mainWrapper {
+    position: relative;
+    margin-top: 80px;
+    padding: 1em;
+    height: calc(100% - 80px);
+}
+
+.addNewSiteForm {
+    text-align: left;
+}
+
+.colorBlack {
+    color: black;
+    align: center;
+}
+
+.colorRed {
+    color: #A00000;
+    align: center;
+}
+
+.colorGreen {
+    color: #00c800;
+    align: center;
+}
+
+.navWrapper {
+    padding: 1em;
+}
+
+.page {
+    padding-top: 1em;
+    height: 66%;
+}
+
+form label {
+    width: 8em;
+    text-align: left;
+    font-family: "Helvetica Neue";
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+form select {
+    width: 15em;
+}
+
+form {
+    text-align: center;
+    position: relative;
+}
+
+.navbar-collapse {
+    background-color: #222;
+}
+
+.container.ng-scope {
+    padding-bottom: 80px;
+    padding-top: 60px;
+}
+
+.btn {
+    padding: 5px 20px;
+    margin-left: 5px;
+}
+
+.control-label{
+    padding-right: 10px;
+}
+@media (max-width: 767px) {
+    .navWrapper {
+        padding: 0px;
+    }
+
+    .navbar-header {
+        margin-top: 1em;
+    }
+}
+
+select.input-sm {
+    font-size: 14px;
+}
+
+.input-sm:disabled {
+    cursor: not-allowed;
+}
+
+a:disabled {
+    cursor: not-allowed;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .navbar-nav > li > a {
+        padding: 10px 8px;
+        margin-top: 5px;
+    }
+}
+
+.panel-transparent {
+    background: none;
+}
+
+.place-widget {
+    background: none;
+    border-color: #000000;
+    font-size: x-small;
+    text-align: center;
+}
+
+.accordion {
+    border-radius: 5px;
+    margin-bottom: 1px;
+    cursor: pointer;
+}
+
+.accordion .glyphicon {
+    float: right;
+    margin-right: 3px;
+}
+
+.accordion .panel {
+    margin-bottom: 10px;
+}
+
+/* Flexible iFrame */
+
+.Flexible-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+
+.Flexible-container iframe,
+.Flexible-container object,
+.Flexible-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contactUs {
+    font-size: 30px;
+}
+
+.responsiveIframe {
+    min-height: 250px;
+    width: 100%;
+    border: 0;
+    z-index: 1;
+    position: absolute;
+}
+
+.place-info-sec {
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.site-info:after {
+    clear: both;
+    content: "";
+    display: block;
+    margin-bottom: 20px;
+}
+
+.places-icons:after {
+    clear: both;
+    content: "";
+    display: block;
+    margin-bottom: 20px;
+}
+
+.accordion .place {
+    margin: 15px 0px;
+    height: 9em;
+    padding: 0px;
+}
+
+.thumbnail-container {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.place .thumbnail:hover {
+    box-shadow: 0px 1px 10px 2px #DDD;
+}
+
+.panel-default, .panel-primary {
+    box-shadow: 0px 0px 25px -3px #3E3E3E;
+}
+
+.required-info {
+    float: left;
+}
+
+.previewImg {
+    max-width: 300px;
+}
+
+.newSiteForm {
+    margin: 0px 15px;
+}
+
+.add-review-label {
+    float: left;
+}
+
+.reviews-sec {
+}
+
+.reviews-element {
+    overflow: hidden;
+    overflow-y: auto;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    max-height: 200px;
+}
+
+.reviews-element .name {
+    float: left;
+}
+
+.reviews-element .rating {
+    float: right;
+}
+
+.reviews-sec .thumbnail {
+    padding: 0px;
+}
+
+.reviews-sec .panel {
+    position: relative;
+    margin-right: 2em;
+    margin-bottom: 5px;
+    margin-left: 2em;
+    box-shadow: 0px 0px 0px 0px;
+    border-color: #D3D3D3;
+}
+
+.reviews-sec .review-rating {
+    float: right;
+}
+
+.reviews-sec .panel-body {
+    padding: 5px;
+}
+
+.reviews-sec .panel .panel-heading {
+    padding: 5px 10px;
+}
+
+.reviews-sec .panel > .panel-heading:after, .panel > .panel-heading:before {
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    display: block;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    pointer-events: none;
+}
+
+.reviews-sec .panel > .panel-heading:after {
+    border-width: 7px;
+    border-right-color: #f7f7f7;
+    margin-top: 1px;
+    margin-left: 2px;
+}
+
+.reviews-sec .panel > .panel-heading:before {
+    border-right-color: #ddd;
+    border-width: 8px;
+}
+
+.tab-content {
+    margin-top: 1em;
+    float: inherit;
+}
+
+.btn-navigation {
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.active-head {
+    text-decoration: underline;
+}
+
+.navbar-inverse .navbar-nav li.active-head a {
+    color: #fff;
+}
+
+.thumbnail .place-front-img {
+    height: 8em;
+}
+
+.thumbnail .place-front-desc {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 2px;
+    font-size: 13px;
+    line-height: 1.1;
+}
+
+.place-rating {
+    margin-top: 0px;
+    margin-bottom: -10px;
+}
+
+.rating-stars {
+    color: #337AB7;
+    outline: 0;
+}
+
+.rating-stars-div {
+    float: left;
+    margin-bottom: 0px;
+    font-size: 25px;
+}
+
+.review-div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.thanks-msg {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.thumbnail {
+    margin: 3px;
+}
+
+.thumbnail .placeImg {
+    padding-right: 5px;
+    padding-left: 0px;
+}
+
+.thumbnail .caption {
+    text-align: left;
+    font-size: 11px;
+    padding: 0px;
+}
+
+.caption .placeName {
+    font-size: 12px;
+    font-weight: bold;
+    color: #AFBD37;
+}
+
+.placesSearchResults {
+    display: block;
+    max-height: 300px;
+    overflow: auto;
+    text-overflow: initial;
+}
+
+.placesSearchResults .placeDet {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.caption .placeDetTitle {
+    font-weight: bold;
+    width: 30px;
+}
+
+.placeThumbnail:hover {
+    box-shadow: 0px 1px 10px 2px #DDD;
+}
+
+.placeThumbnail {
+    box-shadow: 0px 0px 15px -3px #3E3E3E;
+    cursor: pointer;
+}
+
+.new_place_map {
+    border: 5px grey double;
+    margin-left: 20px;
+    padding: 5px;
+}
+
+.place_map {
+    border: 5px grey double;
+    margin: 10px;
+    padding: 5px;
+}
+
+.site_map {
+    border: 5px grey double;
+    margin: 20px;
+    padding: 5px;
+}
+
+.send-review-btn {
+    margin-bottom: 10px;
+    padding: 5px 30px;
+}
+
+.choosen_place_map {
+    border: 5px grey double;
+    margin-left: 20px;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+.selected_place {
+    border-color: green;
+    border-width: 2px;
+}
+
+.cord-input {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.bootstrap-dialog .modal-header.bootstrap-dialog-draggable {
+    cursor: -webkit-grab;
+}
+
+select option {
+    color: black;
+}
+
+.locationWidg select option:first-child {
+    color: grey;
+}
+
+select.empty {
+    color: grey;
+}
+
+select option[disabled]:first-child {
+    display: none;
+}
+
+.new-place-sign {
+    width: 75px;
+    position: absolute;
+    z-index: 1;
+    top: -8px;
+    left: -9px;
+}
+
+.has-new-place-sign {
+    width: 40px;
+    position: absolute;
+    top: -1px;
+    right: -1px;
+}
+
+.place-image-block {
+    position: relative;
+    z-index: 1;
+}
+
+.last-updated {
+    color: grey;
+    text-align: left;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.link-urls {
+    margin-left: 10px;
+    max-height: 111px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-footer {
+    padding: 7px;
+}
+
+.form-control {
+    height: 30px;
+}
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 0px;
+    font-size: 19px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.remove-link-btn {
+    float: right;
+}
+
+.add-link-btn {
+    margin-bottom: 10px;
+    float: left;
+    margin-left: 20px;
+}
+
+.place-info-add-btn {
+    float: right;
+    margin-bottom: 3px;
+    margin-top: 10px;
+}
+
+.url-input {
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+.add-first-photo-btn {
+    float: right;
+    margin: -3px 5px;
+}
+
+.modal-dialog {
+    margin: 80px auto;
+}
+
+.tab-pane {
+    margin-bottom: 5px;
+}
+
+.tab-pane .center {
+    display: block;
+    margin: 10px auto 10px auto;
+}
+
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: none;
+}
+
+.tab-content > .active,
+.pill-content > .active {
+    display: block;
+}
+
+.carousel {
+    margin-top: 20px;
+}
+
+.carousel .item img {
+    margin: 0 auto;
+    height: auto;
+    max-width: 500px;
+    max-height: 650px;
+}
+
+.bs-example {
+    margin: 20px;
+}
+
+.place-img-container {
+    max-width: 500px;
+}
+
+.form-horizontal {
+    display: inline-block;
+    width: 100%
+}
