@@ -1,0 +1,49 @@
+<project name="refresh" basedir="." default="do_backup">
+	<description>
+		Back_up for TripComp server
+	</description>
+	<property name="root_dir" value="C:/" />
+	<tstamp>
+		<format property="BACKUP_DATE" pattern="dd-MM-yyyy--hh-mm" locale="en,UK" />
+	</tstamp>
+
+	<target name="do_backup">
+		<echo>${line.separator}</echo>
+		<echo>${line.separator}</echo>
+		<echo message="============================================================================================"/>
+		<echo message="================================${BACKUP_DATE}==========================================="/>
+		<echo message="============================================================================================"/>
+				<antcall target="backup_current_db" />
+				<antcall target="backup_current_build"/>
+	</target>
+
+	<target name="backup_current_db">
+		<echo>Creating zip for database...</echo>
+		<property name="ZIP_NAME" value="TripComp_db_${BACKUP_DATE}" />
+		<zip destfile="${root_dir}/back_up/${ZIP_NAME}.zip" update="true">
+			<fileset dir="${root_dir}/data">
+			<exclude name="**/mongod.lock"/>
+				</fileset>
+		</zip>
+		<echo>Done creating zip for database.</echo>
+	</target>
+	
+	<target name="backup_current_build">
+		<tstamp>
+			<format property="BACKUP_DATE" pattern="dd-MM-yyyy--hh-mm"
+				locale="en,UK" />
+		</tstamp>
+		<echo>Creating zip for code...</echo>
+		<property name="ZIP_NAME" value="TripComp_build_${BACKUP_DATE}" />
+		<zip destfile="${root_dir}/back_up/${ZIP_NAME}.zip" update="true">
+			<fileset dir="${root_dir}/TripComp/TripComp">
+				<exclude name="**/Logs/**"/>
+				<exclude name="**/data/**"/>
+				<exclude name="**/node_modules/**"/>
+        <exclude name="**/*.txt"/>
+        <exclude name="**/*.log"/>
+			</fileset>
+		</zip>
+		<echo>Done creating zip for database.</echo>
+	</target>
+</project>

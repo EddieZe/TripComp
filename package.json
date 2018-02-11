@@ -1,0 +1,27 @@
+{
+  "name": "TripCom",
+  "version": "0.3.8beta",
+  "private": true,
+  "scripts": {
+    "start": "node ./scripts/tripCompStart"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "connect-multiparty": "*",
+    "debug": "*",
+    "ejs": "*",
+    "express": "*",
+    "grunt": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-internal": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "mongoose": "*",
+    "mongoose-double": "*",
+    "morgan": "*",
+    "multer": "*",
+    "nodemailer": "*",
+    "requirejs": "*",
+    "winston": "*"
+  }
+}
