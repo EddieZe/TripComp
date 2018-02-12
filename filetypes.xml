@@ -1,0 +1,8 @@
+<application>
+  <component name="FileTypeManager" version="16">
+    <extensionMap>
+      <mapping pattern="*Spec.js" type="JavaScript" />
+      <mapping ext="java" type="JavaScript" />
+    </extensionMap>
+  </component>
+</application>
