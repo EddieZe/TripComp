@@ -1,0 +1,10 @@
+<div class="col-sm-12">
+    <a ng-click="addLink()" class="btn btn-primary add-link-btn">Add New Link</a>
+</div>
+<div class="link-urls col-sm-12">
+    <div class="form-group" ng-repeat="l in links">
+        <div class="col-sm-1 col-sm-offset-1"><a ng-click="deleteLink($index)" ng-disabled="links.length < 2" class="btn btn-primary">Remove</a></div>
+        <select class="colorBlack input-sm col-sm-3 col-sm-offset-2 dropdown" ng-options="op.name for op in linksOpt track by op.type" ng-model="l.type" required></select>
+        <div class="col-sm-5 url-input"><input name="webSiteURL" type="url" id="webSiteURL" class="form-control" ng-model="l.url" placeholder="http://" required/></div>
+    </div>
+</div>

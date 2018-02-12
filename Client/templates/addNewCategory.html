@@ -1,0 +1,19 @@
+<div data-ng-controller="AddCategoryController" data-ng-app="TripComp">
+    <div class="page-header text-center"><h1>Add New Category</h1></div>
+    <form name="addCategoryFrm" class="form-horizontal" novalidate>
+       <div class="col-md-6 col-md-offset-3">
+           <div class="panel panel-primary">
+               <div class="panel-heading"><h2 class="panel-title">Add New Category</h2></div>
+               <div class="panel-body">
+                   <div>
+                       <label for="categoryName" class="">Category Name:*</label>
+                       <input name="categoryName" id="categoryName" data-ng-model="categoryName" class="input-sm" placeholder="Category Name" required/>
+                   </div>
+                   <br>
+                   <a data-ng-click="addNewCategory()" class="btn btn-primary" ng-disabled="addCategoryFrm.$invalid">Add</a>
+               </div>
+
+           </div>
+       </div>
+    </form>
+</div>
