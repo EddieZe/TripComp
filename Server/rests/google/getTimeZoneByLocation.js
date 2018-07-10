@@ -36,7 +36,7 @@ var prepareOutput = function (result) {
         timeZoneId: result.timeZoneId,
         rawOffset: result.rawOffset,
         dstOffset: result.dstOffset,
-        formatedTimeZone: "(UTC" + (result.rawOffset != 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
+        formatedTimeZone: "(UTC" + (result.rawOffset !== 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
     };
     return timeZone
 };

@@ -81,7 +81,7 @@ var addSiteToDB = function (siteToAdd, callback) {
                         responseData: null
                     });
                 }
-                else if (docs.length == 0) {
+                else if (docs.length === 0) {
                     getNewCountryId(function (newSiteId) {
                         if (newSiteId.responseInfo.isErrorOccurred) {
                             callback(newSiteId);
@@ -176,7 +176,7 @@ var addSiteToDB = function (siteToAdd, callback) {
                                                 siteToAdd.cities[0].sites[0].imgSource = 'resources/images/sitesFrontView/' + siteToAdd.cities[0].sites[0].siteId + '_' + siteToAdd.cities[0].sites[0].siteName + '_0.jpg';
                                             }
                                             queryRes.cities.forEach(function(city){
-                                                if (city.cityName == siteToAdd.cities[0].cityName) {
+                                                if (city.cityName === siteToAdd.cities[0].cityName) {
                                                     city.sites.push(siteToAdd.cities[0].sites[0])
                                                 }
                                             });
@@ -217,7 +217,7 @@ function updateSitePhotoSrc(siteId, newSitePhotoSrc, callback) {
     siteMdl.findOne({'cities.sites.siteId': siteId}, function (err, queryRes) {
         queryRes.cities.forEach(function (cityEl) {
             cityEl.sites.forEach(function (siteEl) {
-                if (siteEl.siteId == siteId) {
+                if (siteEl.siteId === siteId) {
                     siteEl.imgSource = newSitePhotoSrc;
                     siteMdl.findOneAndUpdate({countryId: queryRes.countryId}, queryRes, {upsert: false}, function (err, res) {
                         if (err) {
@@ -307,7 +307,6 @@ function getNewSiteId(countryName, cityName, callback) {
                 res[0].cities.forEach(function(city){
                     if (city.cityName === cityName) {
                         sites = city.sites;
-                        return;
                     }
                 });
                 sites.forEach(function(site){

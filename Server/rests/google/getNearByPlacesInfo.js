@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
         if (places.responseInfo.isErrorOccurred) {
             res.send(places)
         }
-        else if (places.responseData.status == appConsts.GOOGLE_STATUS.ZERO_RESULTS) {
+        else if (places.responseData.status === appConsts.GOOGLE_STATUS.ZERO_RESULTS) {
             res.send({
                 responseInfo: {isErrorOccurred: false, responseMsg: 'No data Found.', errorData: appConsts.GOOGLE_STATUS.ZERO_RESULTS},
                 responseData: null

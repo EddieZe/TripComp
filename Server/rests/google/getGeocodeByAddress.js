@@ -41,13 +41,13 @@ router.post('/', function (req, res) {
                 placeId: res.place_id
             };
             res.address_components.forEach(function (addressComp) {
-                if (addressComp.types.indexOf("country") != -1) {
+                if (addressComp.types.indexOf("country") !== -1) {
                     loc.country = addressComp.long_name
                 }
-                if (addressComp.types.indexOf("locality") != -1) {
+                if (addressComp.types.indexOf("locality") !== -1) {
                     loc.city = addressComp.long_name
                 }
-                if (addressComp.types.indexOf("administrative_area_level_1") != -1) {
+                if (addressComp.types.indexOf("administrative_area_level_1") !== -1) {
                     loc.state = addressComp.long_name
                 }
             });
@@ -82,7 +82,7 @@ var prepareOutputForTimeZone = function (result) {
         timeZoneId: result.timeZoneId,
         rawOffset: result.rawOffset,
         dstOffset: result.dstOffset,
-        formatedTimeZone: "(UTC" + (result.rawOffset != 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
+        formatedTimeZone: "(UTC" + (result.rawOffset !== 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
     };
     return timeZone
 };
