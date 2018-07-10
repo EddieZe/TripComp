@@ -44,7 +44,7 @@ define(['./srvModule'], function (module) {
                             callback(responseInfo);
                         }
                         else {
-                            responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                            responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                             console.log(responseInfo.responseMsg + responseInfo.errorData);
                             callback(responseInfo);
                         }

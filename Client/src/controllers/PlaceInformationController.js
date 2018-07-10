@@ -27,7 +27,7 @@ define(['./ctrlModule'], function (module) {
 
         $scope.place = place;
 
-        $scope.isPhotoExist = $scope.place.mainPhoto != 'resources/images/placeIcon.jpg';
+        $scope.isPhotoExist = $scope.place.mainPhoto !== 'resources/images/placeIcon.jpg';
 
         var activeTab = null;
         $('a[data-toggle="tab"]').on('shown', function (e) {
@@ -41,30 +41,32 @@ define(['./ctrlModule'], function (module) {
             place.googleInfo.locationInfo.lat &&
             place.googleInfo.locationInfo.lat != 0 &&
             place.googleInfo.locationInfo.lng &&
-            place.googleInfo.locationInfo.lng != 0;
+            place.googleInfo.locationInfo.lng !== 0;
 
         $scope.ok = function () {
             $uibModalInstance.close();
         };
 
         $scope.updateTab = function (tab) {
+            var $addPhotoBtn = $('#addPhotoBtn');
+            var $addLinkBtn = $('#addLinkBtn');
             switch (tab) {
                 case 'generalTab':
                     if (!$scope.isPhotoExist) {
-                        $('#addPhotoBtn').show()
+                        $addPhotoBtn.show()
                     }
                     else {
-                        $('#addPhotoBtn').hide()
+                        $addPhotoBtn.hide()
                     }
-                    $('#addLinkBtn').show();
+                    $addLinkBtn.show();
                     break;
                 case 'photoTab':
-                    $('#addPhotoBtn').show();
-                    $('#addLinkBtn').hide();
+                    $addPhotoBtn.show();
+                    $addLinkBtn.hide();
                     break;
                 case 'ratingTab':
-                    $('#addPhotoBtn').hide();
-                    $('#addLinkBtn').hide();
+                    $addPhotoBtn.hide();
+                    $addLinkBtn.hide();
                     break;
             }
         };
@@ -93,7 +95,7 @@ define(['./ctrlModule'], function (module) {
 
         function populateLinks() {
             var links = [];
-            var link = {}
+            var link = {};
             if (place.siteURL) {
                 link = {
                     type: "siteURL",
@@ -121,7 +123,7 @@ define(['./ctrlModule'], function (module) {
             if (links.length > 0) {
                 place.links = links;
             }
-        };
+        }
 
         $scope.getReviews = function () {
             $http({
@@ -139,7 +141,7 @@ define(['./ctrlModule'], function (module) {
                     }
                 })
                 .error(function (err, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -182,7 +184,7 @@ define(['./ctrlModule'], function (module) {
                     }
                 })
                 .error(function (data, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -196,7 +198,7 @@ define(['./ctrlModule'], function (module) {
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });
-        };
+        }
 
         $scope.uploadFiles = function () {
             var fileName;
@@ -262,7 +264,7 @@ define(['./ctrlModule'], function (module) {
 
                 })
                 .error(function (err, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',

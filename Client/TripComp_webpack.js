@@ -1792,7 +1792,7 @@
 	'use strict';
 
 	!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(17)], __WEBPACK_AMD_DEFINE_RESULT__ = function (module) {
-	    var selectLoaction = module.directive('selectLoaction', function () {
+	    var selectLocation = module.directive('selectLocation', function () {
 	        return {
 	            restrict: 'AEC',
 	            controller: 'locationController',
@@ -1802,7 +1802,7 @@
 	            templateUrl: '../../templates/locationTab.html'
 	        }
 	    });
-	    return selectLoaction;
+	    return selectLocation;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },

@@ -42,7 +42,7 @@ define(['./srvModule'], function (module) {
                         }});
                     }
                     else {
-                        callback({responseInfo : {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data}});
+                        callback({responseInfo : {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data}});
                     }
                 });
         };

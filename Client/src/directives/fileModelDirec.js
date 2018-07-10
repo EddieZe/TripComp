@@ -16,6 +16,6 @@ define(['./direcModule'], function(module) {
                 });
             }
         };
-    }])
+    }]);
     return fileModel;
 });
