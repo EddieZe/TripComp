@@ -67,9 +67,9 @@ define(['./ctrlModule'], function (module) {
             }
             $('#addNewPlaceFrm').on('keyup keypress', function (e) {
                 var code = e.keyCode || e.which;
-                if (code == 13) {
+                if (code === 13) {
                     e.preventDefault();
-                    if ($scope.currTab == 'googleSearchTab' && $scope.searchStr) {
+                    if ($scope.currTab === 'googleSearchTab' && $scope.searchStr) {
                         $scope.searchForPlaces($scope.siteLocation.site, $scope.searchStr, $scope.searchRadius.value);
                     }
                     else {
@@ -123,7 +123,7 @@ define(['./ctrlModule'], function (module) {
                     }
                     break;
                 case 'imageUploadTab':
-                    if ($scope.siteLocation && $scope.siteLocation.site && $scope.newPlaceInfo.name && $scope.placeCategory.indexOf(true) != -1) {
+                    if ($scope.siteLocation && $scope.siteLocation.site && $scope.newPlaceInfo.name && $scope.placeCategory.indexOf(true) !== -1) {
                         headSelec.removeClass('active-head');
                         $('#imageUploadTabHead').addClass('active-head');
                         $scope.nextPage = undefined;
@@ -202,7 +202,7 @@ define(['./ctrlModule'], function (module) {
                                 });
                             }
                             catch (err) {
-                                console.log('Error occured while uploading place image.');
+                                console.log('Error occurred while uploading place image.');
                                 massage = 'The place was added, but there was a problem uploading the image';
                                 showMessage.showMessage(massage);
                             }
@@ -224,7 +224,7 @@ define(['./ctrlModule'], function (module) {
                     }
                     else {
 
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });
@@ -318,7 +318,7 @@ define(['./ctrlModule'], function (module) {
                                     }
                                 }
                             }
-                            if (placeInfo.responseData.categories != undefined) {
+                            if (placeInfo.responseData.categories !== undefined) {
                                 placeInfo.responseData.categories.forEach(placeCategMapper);
                             }
                             $scope.goToTab($scope.nextPage);
@@ -400,7 +400,7 @@ define(['./ctrlModule'], function (module) {
                     }
                 })
                 .error(function (data, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -409,7 +409,7 @@ define(['./ctrlModule'], function (module) {
                         showMessage.showError(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });

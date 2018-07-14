@@ -26,13 +26,8 @@ router.post('/', function (req, res) {
 });
 
 var validateInput = function(input){
-    if (!input.type || !input.name){
-        return false;
-    }
-    else{
-        return true;
-    }
-}
+    return input.type && input.name
+};
 
 function execute(input,callback){
     linkTypeSrv.addLinkTypeToDB(input, function (dbRes) {

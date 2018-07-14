@@ -24,7 +24,7 @@ define(['./ctrlModule'], function (module) {
                 else {
                     $("#countrySelection").removeClass("empty");
                 }
-                if (newCountry && newCountry.cities && newCountry.cities.length == 1) {
+                if (newCountry && newCountry.cities && newCountry.cities.length === 1) {
                     $scope.siteLoc.city = newCountry.cities[0];
                 }
             });
@@ -35,7 +35,7 @@ define(['./ctrlModule'], function (module) {
                 else {
                     $("#citySelection").removeClass("empty");
                 }
-                if (newCity && newCity.sites && newCity.sites.length == 1) {
+                if (newCity && newCity.sites && newCity.sites.length === 1) {
                     $scope.siteLoc.site = newCity.sites[0];
                 }
             });
@@ -71,7 +71,7 @@ define(['./ctrlModule'], function (module) {
         function selectFromStorage(){
             if ($sessionStorage.country && $sessionStorage.city && $sessionStorage.site) {
                 $scope.countries.forEach(function (country, index) {
-                    if (country.name == $sessionStorage.country.name) {
+                    if (country.name === $sessionStorage.country.name) {
                         $scope.siteLoc.country = $scope.countries[index];
                         $scope.siteLoc.city = $sessionStorage.city;
                         $scope.siteLoc.site = $sessionStorage.site;

@@ -21,14 +21,14 @@ define(['./ctrlModule'], function(module) {
                         showMessage.showError(data.responseInfo.responseMsg);
                     }
                     else {
-                        showMessage.showMessage('The catagory was added');
+                        showMessage.showMessage('The category was added');
                         $location.path("/");
                     }
 
 
                 })
                 .error(function (data, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -37,7 +37,7 @@ define(['./ctrlModule'], function(module) {
                         showMessage.showError(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });

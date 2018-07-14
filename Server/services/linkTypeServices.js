@@ -7,12 +7,12 @@
 
 var properties = require('./../infra/dataBase/dbProperties');
 var logger = require('../infra/winstonLogger.js');
-var linkTyprSch = require('../infra/schemas/linkTypeSchema');
+var linkTypeSch = require('../infra/schemas/linkTypeSchema');
 var connection = require('./../infra/dataBase/dbConnection');
 var linkTypeMdl;
 
 try {
-    linkTypeMdl = connection.getConnection().model(properties.COL_LINKS_TYPES, linkTyprSch.getSchema());
+    linkTypeMdl = connection.getConnection().model(properties.COL_LINKS_TYPES, linkTypeSch.getSchema());
 }
 catch (err) {
     console.log('error: ' + err);

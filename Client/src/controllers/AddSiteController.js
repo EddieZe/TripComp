@@ -61,7 +61,7 @@ define(['./ctrlModule'], function (module) {
         };
 
         $scope.updateCityList = function () {
-            if ($scope.existingCountry.countryId == '9999') {
+            if ($scope.existingCountry.countryId === '9999') {
                 $scope.isNewCountry = true;
                 $scope.isNewCity = true;
             }
@@ -69,7 +69,7 @@ define(['./ctrlModule'], function (module) {
                 $scope.isNewCountry = false;
                 $scope.isNewCity = false;
             }
-            if (!($scope.existingCountry.countryId == '9999') && !($scope.existingCountry.cities.slice().pop().cityId == '999999')) {
+            if (!($scope.existingCountry.countryId === '9999') && !($scope.existingCountry.cities.slice().pop().cityId === '999999')) {
                 $scope.existingCountry.cities.push({
                     cityId: '999999',
                     cityName: '=== Add New ==='
@@ -79,7 +79,7 @@ define(['./ctrlModule'], function (module) {
         };
 
         $scope.setVisability = function () {
-            $scope.isNewCity = $scope.existingCity.cityId == '999999';
+            $scope.isNewCity = $scope.existingCity.cityId === '999999';
         };
 
         $scope.addNewSite = function () {
@@ -106,7 +106,7 @@ define(['./ctrlModule'], function (module) {
                             $scope.uploadFiles(data);
                         }
                         catch (err) {
-                            responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: err};
+                            responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: err};
                             showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                         }
                         showMessage.showMessage('The site was added');
@@ -118,7 +118,7 @@ define(['./ctrlModule'], function (module) {
                     }
                 })
                 .error(function (data, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -127,7 +127,7 @@ define(['./ctrlModule'], function (module) {
                         showMessage.showError(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });
@@ -140,7 +140,7 @@ define(['./ctrlModule'], function (module) {
                 .success(function () {
                 })
                 .error(function (status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -149,7 +149,7 @@ define(['./ctrlModule'], function (module) {
                         showMessage.showError(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: err};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: err};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });
@@ -236,7 +236,7 @@ define(['./ctrlModule'], function (module) {
                     }
                 })
                 .error(function (data, status) {
-                    if (status == 0) {
+                    if (status === 0) {
                         responseInfo = {
                             isErrorOccurred: true,
                             responseMsg: 'Can\'t reach the server, please contact the Administrator',
@@ -245,7 +245,7 @@ define(['./ctrlModule'], function (module) {
                         showMessage.showError(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });

@@ -28,7 +28,7 @@ define(['./srvModule'], function (module) {
                         console.log(responseInfo.responseMsg);
                     }
                     else {
-                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: data};
+                        responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: data};
                         console.log(responseInfo.responseMsg + responseInfo.errorData);
                     }
                 });

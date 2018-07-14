@@ -6,7 +6,7 @@
 'use strict';
 
 define(['./direcModule'], function (module) {
-    var selectLoaction = module.directive('selectLoaction', function () {
+    var selectLocation = module.directive('selectLocation', function () {
         return {
             restrict: 'AEC',
             controller: 'locationController',
@@ -16,5 +16,5 @@ define(['./direcModule'], function (module) {
             templateUrl: '../../templates/locationTab.html'
         }
     });
-    return selectLoaction;
+    return selectLocation;
 });

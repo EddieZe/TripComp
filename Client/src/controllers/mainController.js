@@ -254,7 +254,7 @@ define(['./ctrlModule'], function (module) {
                 });
             }
             catch (err) {
-                responseInfo = {isErrorOccurred: true, responseMsg: 'Error Occured', errorData: err};
+                responseInfo = {isErrorOccurred: true, responseMsg: 'Error occurred', errorData: err};
                 showMessage.showError(responseInfo.responseMsg + responseInfo.errorData);
             }
         };

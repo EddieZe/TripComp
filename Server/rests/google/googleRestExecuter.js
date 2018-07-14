@@ -36,21 +36,21 @@ var executeCall = function (apiName, input, callback) {
 
     https.request(options, new HttpResponseProcessor(appConsts.OUTPUT_FORMAT === "json", function (err, googleRes) {
         if (googleRes) {
-            if (googleRes.status == appConsts.GOOGLE_STATUS.OK || googleRes.status == appConsts.GOOGLE_STATUS.NOT_FOUND || googleRes.status == appConsts.GOOGLE_STATUS.ZERO_RESULTS) {
+            if (googleRes.status === appConsts.GOOGLE_STATUS.OK || googleRes.status === appConsts.GOOGLE_STATUS.NOT_FOUND || googleRes.status === appConsts.GOOGLE_STATUS.ZERO_RESULTS) {
                 callback({
                     responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
                     responseData: googleRes
                 });
             }
-            else if (googleRes.status == appConsts.GOOGLE_STATUS.INVALID_REQUEST) {
+            else if (googleRes.status === appConsts.GOOGLE_STATUS.INVALID_REQUEST) {
                 logger.error('googleRestExecuter.executeCall', "Error massage: The request is not correct, Google status: " + googleRes.status);
                 callback({responseInfo: {isErrorOccurred: true, responseMsg: "The request is not correct", googleStatus: googleRes.status}});
             }
-            else if (googleRes.status == appConsts.GOOGLE_STATUS.OVER_QUERY_LIMIT) {
+            else if (googleRes.status === appConsts.GOOGLE_STATUS.OVER_QUERY_LIMIT) {
                 logger.error('googleRestExecuter.executeCall', "You have reached the maximum google request per day. Google status: " + googleRes.status);
                 callback({responseInfo: {isErrorOccurred: true, responseMsg: "You have reached the maximum google request per day.", googleStatus: googleRes.status}});
             }
-            else if (googleRes.status == appConsts.GOOGLE_STATUS.REQUEST_DENIED) {
+            else if (googleRes.status === appConsts.GOOGLE_STATUS.REQUEST_DENIED) {
                 logger.error('googleRestExecuter.executeCall', "The request was denied, please check google error massage, Google status: " + googleRes.status + " Google error massage: " + googleRes.error_message);
                 callback({responseInfo: {isErrorOccurred: true, responseMsg: "The request was denied, please check google error massage", googleStatus: googleRes.status, googleErrMsg: googleRes.error_message}});
             }
