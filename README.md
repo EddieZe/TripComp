@@ -6,4 +6,4 @@ TripComp is a web application to manage and to assist employees to share points 
 
 ## License
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+See the [LICENSE](LICENSE.txt) file for license rights and limitations (MIT).
