@@ -20,7 +20,7 @@ const IS_LOGGER_ON = true;
 const SITE_IMAGES_PATH = 'resources/images/sitesFrontView/';
 const PLACE_IMAGES_PATH = 'resources/images/places/';
 
-/*=============================== Amdocs Proxy ===============================*/
+/*=============================== Proxy ===============================*/
 const PROXY_HOST = "proxy";
 const PROXY_PORT = 0000;
 const IS_BEHIND_PROXY = false;
