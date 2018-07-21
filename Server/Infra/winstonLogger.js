@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var os = require('os');
-var winston = require('winston');
-var appConsts = require('./appConstsAndProperties');
+const os = require('os');
+const winston = require('winston');
+const appConsts = require('./appConstsAndProperties');
 
-var debug_Status = {
+const debug_Status = {
     START: 'START',
     END: 'END'
 };
 
-var logger = new (winston.Logger)({
+const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
             name: 'node_log',
@@ -53,8 +53,8 @@ function error(path, err) {
 
 function formatter(args) {
 
-    var nowDate = new Date();
-    var date = nowDate.toLocaleDateString() + ' ' + nowDate.toLocaleTimeString() + ' ' + nowDate.getMilliseconds();
+    const nowDate = new Date();
+    const date = nowDate.toLocaleDateString() + ' ' + nowDate.toLocaleTimeString() + ' ' + nowDate.getMilliseconds();
     return '<<' + args.level.toUpperCase() + '>> <<' + date + '>> <<' + os.hostname() + '>> ' + args.message;
 
 }

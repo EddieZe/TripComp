@@ -5,21 +5,21 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var siteServices = require('./../../services/siteServices');
-var appConsts = require('./../../infra/appConstsAndProperties');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const siteServices = require('./../../services/siteServices');
+const appConsts = require('./../../infra/appConstsAndProperties');
+const logger = require('./../../infra/winstonLogger.js');
 
 router.post('/', function (req, res) {
 
     logger.debug('addNewSite.post', logger.debug_Status.START);
 
-    var timeZone = '';
+    let timeZone = '';
     if (req.body.timeZone) {
         timeZone = req.body.newSiteInfo.timeZone.text;
     }
-    var site = {
+    let site = {
         "isImageSelected": req.body.newSiteInfo.isImageSelected,
         "name": req.body.newSiteInfo.countryName,
         "cities": [

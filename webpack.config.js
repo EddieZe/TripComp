@@ -5,7 +5,7 @@
  */
 'use strict';
 
-var paths = require('path');
+const paths = require('path');
 
 module.exports = {
     resolve: {

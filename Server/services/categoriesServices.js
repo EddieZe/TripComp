@@ -5,11 +5,12 @@
  */
 'use strict';
 
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var categorySch = require('../infra/schemas/CategorySchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var categoryMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const categorySch = require('../infra/schemas/CategorySchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let categoryMdl;
 
 try {
     categoryMdl = connection.getConnection().model(properties.COL_CATEGORIES, categorySch.getSchema());
@@ -18,7 +19,7 @@ catch (err) {
     console.log('error: ' + err);
 }
 
-var getCategoriesFromDB = function (callback) {
+const getCategoriesFromDB = function (callback) {
 
     categoryMdl.find({})
         .exec(function (err, categoriesRes) {
@@ -37,7 +38,7 @@ var getCategoriesFromDB = function (callback) {
         });
 };
 
-var addNewCategory = function (newCategory, callback) {
+const addNewCategory = function (newCategory, callback) {
 
     categoryMdl.findOne({})
         .where('categoryName').equals(newCategory.categoryName)

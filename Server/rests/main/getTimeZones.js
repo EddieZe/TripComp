@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var appConsts = require('./../../infra/appConstsAndProperties');
-var timeZoneSrv = require('./../../services/timeZoneServices');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const appConsts = require('./../../infra/appConstsAndProperties');
+const timeZoneSrv = require('./../../services/timeZoneServices');
+const logger = require('./../../infra/winstonLogger.js');
 
 /* retrieve Countries. */
 router.get('/', function (req, res) {
-    var timeZoneLst;
-    var timeZoneDetails;
+    let timeZoneLst;
+    let timeZoneDetails;
 
     timeZoneSrv.getTimeZonesFromDB(function (dbRes) {
         if (dbRes.responseInfo.isErrorOccurred) {
@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
             timeZoneDetails = JSON.parse(JSON.stringify(dbRes.responseData));
             timeZoneLst = [];
 
-            for (var site in timeZoneDetails) {
+            for (let site in timeZoneDetails) {
                 if (timeZoneDetails.hasOwnProperty(site)) {
                     timeZoneLst.push(timeZoneDetails[site])
                 }

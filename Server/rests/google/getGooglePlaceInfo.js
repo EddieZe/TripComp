@@ -5,15 +5,15 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
 
 
 router.post('/', function (req, res) {
 
-    var parameters = {
+    let parameters = {
         placeid: req.body.placeId
     };
 
@@ -26,7 +26,7 @@ router.post('/', function (req, res) {
         }
     });
 
-    var prepareOutput = function (placeDet) {
+    let prepareOutput = function (placeDet) {
         return {
             name: placeDet.name,
             address: (placeDet.formatted_address) ? placeDet.formatted_address : placeDet.vicinity,

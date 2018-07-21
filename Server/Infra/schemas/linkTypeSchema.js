@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var mongoose = require("mongoose"),
+const mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
-var LinkTypeSch = new Schema({
+const LinkTypeSch = new Schema({
     typeId: {type: Number},
     type:  {type: String},
     name:  {type: String},
@@ -17,7 +17,7 @@ var LinkTypeSch = new Schema({
 });
 
 LinkTypeSch.pre('save', function (next) {
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     if (!this.created_at) {
         this.created_at = now;
@@ -25,7 +25,7 @@ LinkTypeSch.pre('save', function (next) {
     next();
 });
 
-var getSchema = function () {
+const getSchema = function () {
     return LinkTypeSch;
 };
 

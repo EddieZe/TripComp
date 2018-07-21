@@ -5,14 +5,14 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
 
-var execute = function (req, res) {
+const execute = function (req, res) {
 
-    var parameters = {
+    let parameters = {
         location: req.location,
         timestamp: 1331161200
     };
@@ -30,22 +30,21 @@ var execute = function (req, res) {
     });
 };
 
-var prepareOutput = function (result) {
-    var timeZone = {
+const prepareOutput = function (result) {
+    return {
         timeZoneName: result.timeZoneName,
         timeZoneId: result.timeZoneId,
         rawOffset: result.rawOffset,
         dstOffset: result.dstOffset,
         formatedTimeZone: "(UTC" + (result.rawOffset !== 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
     };
-    return timeZone
 };
 
-var prepareFormattedTimeZone = function (rawOffset) {
-    var time = rawOffset / 3600;
-    var sign = time < 0 ? "-" : "+";
-    var hour = Math.floor(Math.abs(time));
-    var min = Math.floor((Math.abs(time) * 60) % 60);
+const prepareFormattedTimeZone = function (rawOffset) {
+    let time = rawOffset / 3600;
+    let sign = time < 0 ? "-" : "+";
+    let hour = Math.floor(Math.abs(time));
+    let min = Math.floor((Math.abs(time) * 60) % 60);
     return sign + (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
 };
 

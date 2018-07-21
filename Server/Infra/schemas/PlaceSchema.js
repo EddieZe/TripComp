@@ -5,22 +5,22 @@
  */
 'use strict';
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 require('mongoose-double')(mongoose);
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 
-var DayOpenHours = new Schema({
+const DayOpenHours = new Schema({
     day: {type: String},
     hours: {type: String}
 });
 
-var ImageSch = new Schema({
+const ImageSch = new Schema({
     type: {type: String, default: "LOCAL"},
     source: {type: String, default: "images/placeIcon.jpg"},
     added_at: {type: Date}
 });
 
-var PlaceSch = new Schema({
+const PlaceSch = new Schema({
     placeId: {type: Number},
     location: {
         countryId: {type: String, length: 4},
@@ -53,7 +53,7 @@ var PlaceSch = new Schema({
 });
 
 PlaceSch.pre('save', function (next) {
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     if (!this.created_at) {
         this.created_at = now;
@@ -62,7 +62,7 @@ PlaceSch.pre('save', function (next) {
 });
 
 PlaceSch.pre('update', function () {
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     next();
 });
@@ -71,7 +71,7 @@ PlaceSch.pre('update', function () {
     this.imgSource.added_at = new Date();
 });
 
-var getSchema = function () {
+const getSchema = function () {
     return PlaceSch;
 };
 

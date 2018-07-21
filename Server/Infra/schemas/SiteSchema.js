@@ -5,18 +5,18 @@
  */
 'use strict';
 
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
 require('mongoose-double')(mongoose);
-var SchemaTypes = mongoose.Schema.Types,
+const SchemaTypes = mongoose.Schema.Types,
     Schema = mongoose.Schema;
 
-var GoogleLocationInfo = new Schema({
+const GoogleLocationInfo = new Schema({
     lat: {type: SchemaTypes.Double, default: 0},
     lng: {type: SchemaTypes.Double, default: 0}
 
 });
 
-var SiteSch = new Schema({
+const SiteSch = new Schema({
     siteId: {type: String, length: 7},
     siteName: {type: String},
     phoneNumber: {type: String},
@@ -32,7 +32,7 @@ var SiteSch = new Schema({
     updated_at: {type: Date}
 });
 
-var CitySch = new Schema({
+const CitySch = new Schema({
     cityId: {type: String, length: 6},
     cityName: {type: String},
     timeZone: {type: String},
@@ -40,19 +40,19 @@ var CitySch = new Schema({
     sites: [SiteSch]
 });
 
-var StateSch = new Schema({
+const StateSch = new Schema({
     stateId: {type: String, length: 5},
     stateName: {type: String}
 });
 
-var SitesSch = new Schema({
+const SitesSch = new Schema({
     countryId: {type: String, length: 4},
     name: {type: String},
     cities: [CitySch]
 });
 
 SiteSch.pre('save', function(next){
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     if ( !this.created_at ) {
         this.created_at = now;
@@ -60,7 +60,7 @@ SiteSch.pre('save', function(next){
     next();
 });
 
-var getSchema = function () {
+const getSchema = function () {
     return SitesSch;
 };
 

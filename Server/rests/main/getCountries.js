@@ -5,9 +5,9 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var siteSrv = require('./../../services/siteServices');
+const express = require('express');
+const router = express.Router();
+const siteSrv = require('./../../services/siteServices');
 
 /* retrieve Countries. */
 router.get('/', function (req, res) {
@@ -24,7 +24,7 @@ router.get('/', function (req, res) {
     }
 });
 
-var validateAndPrepareInput = function () {
+const validateAndPrepareInput = function () {
     return true;
 };
 
@@ -44,8 +44,8 @@ function execute(callback) {
 }
 
 function validateAndPrepareOutput(output, callback) {
-    var sitesLst;
-    var sitesDetails;
+    let sitesLst;
+    let sitesDetails;
 
     if (output.responseInfo.isErrorOccurred) {
         callback(false, output);
@@ -54,7 +54,7 @@ function validateAndPrepareOutput(output, callback) {
         sitesDetails = JSON.parse(JSON.stringify(output.responseData));
         sitesLst = [];
 
-        for (var site in sitesDetails) {
+        for (let site in sitesDetails) {
             if (sitesDetails.hasOwnProperty(site)) {
                 sitesLst.push(sitesDetails[site])
             }

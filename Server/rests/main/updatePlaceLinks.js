@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var placeMdl = require('./../../services/placeServices');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const placeMdl = require('./../../services/placeServices');
+const logger = require('./../../infra/winstonLogger.js');
 
 
 router.post('/', function (req, res) {
