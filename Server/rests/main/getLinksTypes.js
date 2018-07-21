@@ -5,9 +5,9 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var linkTypeSrv = require('./../../services/linkTypeServices');
+const express = require('express');
+const router = express.Router();
+const linkTypeSrv = require('./../../services/linkTypeServices');
 
 /* retrieve Countries. */
 router.get('/', function (req, res) {

@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var fs = require('fs');
-var logger = require('./../../infra/winstonLogger.js');
-var multiparty = require('connect-multiparty');
-var multipartyMiddleware = multiparty();
+const express = require('express');
+const router = express.Router();
+const fs = require('fs');
+const logger = require('./../../infra/winstonLogger.js');
+const multiparty = require('connect-multiparty');
+const multipartyMiddleware = multiparty();
 
 router.post('/', multipartyMiddleware, function (req, res) {
-    var file = req.files.file;
-    var targetPath = req.body.newPhotoSrc.source + file.name;
+    let file = req.files.file;
+    let targetPath = req.body.newPhotoSrc.source + file.name;
     fs.rename(file.path, targetPath, function (err) {
         if (err) {
             if (err.errno === -4048) {

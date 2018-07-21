@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var reviewSrv = require('./../../services/reviewServices');
-var appConsts = require('./../../infra/appConstsAndProperties');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const reviewSrv = require('./../../services/reviewServices');
+const appConsts = require('./../../infra/appConstsAndProperties');
+const logger = require('./../../infra/winstonLogger.js');
 
 /* retrieve places for site. */
 router.post('/', function (req, res) {
 
-    var placeId = req.body.placeId;
+    let placeId = req.body.placeId;
 
     reviewSrv.getPlaceRatingFromDB(placeId, function (dbRes) {
         if (dbRes.responseInfo.isErrorOccurred) {

@@ -5,17 +5,17 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var appConsts = require('./../../infra/appConstsAndProperties');
-var categoriesDBCon = require('./../../services/categoriesServices.js');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const appConsts = require('./../../infra/appConstsAndProperties');
+const categoriesDBCon = require('./../../services/categoriesServices.js');
+const logger = require('./../../infra/winstonLogger.js');
 
 
 /* retrieve Countries. */
 router.get('/', function (req, res) {
-    var categoriesLst;
-    var categories;
+    let categoriesLst;
+    let categories;
 
     categoriesDBCon.getCategoriesFromDB(function (dbRes) {
         if (dbRes.responseInfo.isErrorOccurred) {
@@ -26,7 +26,7 @@ router.get('/', function (req, res) {
             categories = JSON.parse(JSON.stringify(dbRes.responseData));
             categoriesLst = [];
 
-            for (var categ in categories) {
+            for (let categ in categories) {
                 if (categories.hasOwnProperty(categ)) {
                     categoriesLst.push(categories[categ])
                 }

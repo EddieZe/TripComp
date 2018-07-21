@@ -5,11 +5,12 @@
  */
 'use strict';
 
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var reviewSch = require('../infra/schemas/ReviewSchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var reviewMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const reviewSch = require('../infra/schemas/ReviewSchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let reviewMdl;
 
 try {
     reviewMdl = connection.getConnection().model(properties.COL_REVIEWS, reviewSch.getSchema());
@@ -18,7 +19,7 @@ catch (err) {
     console.log('error: ' + err);
 }
 
-var getPlaceReviewsFromDB = function (placeId, callback) {
+const getPlaceReviewsFromDB = function (placeId, callback) {
     reviewMdl.find({})
         .where('placeId').equals(placeId)
         .where('text').ne(null)
@@ -45,7 +46,7 @@ var getPlaceReviewsFromDB = function (placeId, callback) {
         });
 };
 
-var getPlaceRatingFromDB = function (placeId, callback) {
+const getPlaceRatingFromDB = function (placeId, callback) {
     reviewMdl.aggregate([
         {$match: {placeId: placeId}},
         {
@@ -78,7 +79,7 @@ var getPlaceRatingFromDB = function (placeId, callback) {
     });
 };
 
-var addNewPlaceReview = function (newReview, callback) {
+const addNewPlaceReview = function (newReview, callback) {
 
     getNewReviewId(function (newId) {
 

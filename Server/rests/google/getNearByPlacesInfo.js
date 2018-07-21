@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
 
 
 router.post('/', function (req, res) {
 
     //Prepare Input for getNearByPlaces
-    var parameters = {
+    let parameters = {
         location: req.body.location,
         radius: req.body.radius,
         keyword: req.body.keyword
@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
             });
         }
         else {
-            var input = prepareInputForGetPlacesInfo(places.responseData.results);
+            let input = prepareInputForGetPlacesInfo(places.responseData.results);
             callGetPlacesInfo(input, function (output) {
                 res.send({
                     responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
@@ -44,16 +44,16 @@ router.post('/', function (req, res) {
 
 });
 
-var prepareInputForGetPlacesInfo = function (googleOutput) {
-    var result = [];
-    for (var i = 0; i < appConsts.MAX_RESULTS && i < googleOutput.length; i++) {
+const prepareInputForGetPlacesInfo = function (googleOutput) {
+    let result = [];
+    for (let i = 0; i < appConsts.MAX_RESULTS && i < googleOutput.length; i++) {
         result[i] = {};
         result[i].placeid = googleOutput[i].place_id;
     }
     return result;
 };
 
-var populatePlaceInfo = function (placeDet) {
+const populatePlaceInfo = function (placeDet) {
 
     return {
         name: placeDet.name,
@@ -71,9 +71,9 @@ var populatePlaceInfo = function (placeDet) {
     }
 };
 
-var callGetPlacesInfo = function (places, callback) {
-    var placesInfo = [];
-    var j = 0;
+const callGetPlacesInfo = function (places, callback) {
+    let placesInfo = [];
+    let j = 0;
     places.forEach(function (el) {
         googleExecuter(appConsts.GOOGLE_APIS.GET_PLACE_DETAILS, el, function (placeInfo) {
             if (placeInfo.responseInfo && !placeInfo.responseInfo.isErrorOccurred) {

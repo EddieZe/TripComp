@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var mongoose = require("mongoose"),
+const mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
-var TimeZoneSch = new Schema({
+const TimeZoneSch = new Schema({
     value: {type: String},
     abbr: {type: String, length: 5},
     offset: {type: Number},
@@ -19,7 +19,7 @@ var TimeZoneSch = new Schema({
 });
 
 TimeZoneSch.pre('save', function(next){
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     if ( !this.created_at ) {
         this.created_at = now;
@@ -27,7 +27,7 @@ TimeZoneSch.pre('save', function(next){
     next();
 });
 
-var getSchema = function () {
+const getSchema = function () {
     return TimeZoneSch;
 };
 

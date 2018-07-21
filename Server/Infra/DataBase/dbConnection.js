@@ -4,11 +4,12 @@
  * Create Date:  29/12/2015
  */
 'use strict';
-var connection;
+const properties = require('./dbProperties');
+const mongoose = require('mongoose');
+
+let connection;
 
 function getConnection() {
-    var properties = require('./dbProperties');
-    var mongoose = require('mongoose');
     mongoose.Promise = global.Promise;
 
     function createConnection() {

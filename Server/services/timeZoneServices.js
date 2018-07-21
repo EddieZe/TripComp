@@ -5,11 +5,12 @@
  */
 'use strict';
 
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var timeZoneSch = require('../infra/schemas/TimeZoneSchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var timeZoneMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const timeZoneSch = require('../infra/schemas/TimeZoneSchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let timeZoneMdl;
 
 try {
     timeZoneMdl = connection.getConnection().model(properties.COL_TIMEZONE, timeZoneSch.getSchema());
@@ -18,7 +19,7 @@ catch (err) {
     console.log('error: ' + err);
 }
 
-var getTimeZonesFromDB = function (callback) {
+const getTimeZonesFromDB = function (callback) {
 
     timeZoneMdl.find({})
         .exec(function (err, timeZonesRes) {

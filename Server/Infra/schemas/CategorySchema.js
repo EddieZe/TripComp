@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var mongoose = require("mongoose"),
+const mongoose = require("mongoose"),
     Schema = mongoose.Schema;
 
-var CategorySch = new Schema({
+const CategorySch = new Schema({
     categoryId: {type: Number},
     categoryName: {type: String},
     priority: {type: Number},
@@ -17,7 +17,7 @@ var CategorySch = new Schema({
 });
 
 CategorySch.pre('save', function (next) {
-    var now = new Date();
+    const now = new Date();
     this.updated_at = now;
     if (!this.created_at) {
         this.created_at = now;
@@ -25,7 +25,7 @@ CategorySch.pre('save', function (next) {
     next();
 });
 
-var getSchema = function () {
+const getSchema = function () {
     return CategorySch;
 };
 

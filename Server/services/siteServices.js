@@ -4,11 +4,12 @@
  * Create Date:  29/12/2015
  */
 'use strict';
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var siteSch = require('../infra/schemas/SiteSchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var siteMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const siteSch = require('../infra/schemas/SiteSchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let siteMdl;
 
 try {
     siteMdl = connection.getConnection().model(properties.COL_SITES, siteSch.getSchema());
@@ -17,7 +18,7 @@ catch (err) {
     console.log('error: ' + err);
 }
 
-var getSitesFromDB = function (callback) {
+const getSitesFromDB = function (callback) {
 
     siteMdl.find({})
         .exec(function (err, countryRes) {
@@ -37,7 +38,7 @@ var getSitesFromDB = function (callback) {
         })
 };
 
-var getSiteInfoFromDB = function (loc, callback) {
+const getSiteInfoFromDB = function (loc, callback) {
 
     siteMdl.findOne({})
         .select('name cities.cityName cities.cityId cities.sites.siteName cities.sites.siteId')
@@ -70,7 +71,7 @@ var getSiteInfoFromDB = function (loc, callback) {
         });
 };
 
-var addSiteToDB = function (siteToAdd, callback) {
+const addSiteToDB = function (siteToAdd, callback) {
 
     siteMdl.find({name: siteToAdd.name})
         .exec(function (err, docs) {
@@ -93,7 +94,7 @@ var addSiteToDB = function (siteToAdd, callback) {
                             if (siteToAdd.isImageSelected) {
                                 siteToAdd.cities[0].sites[0].imgSource = 'resources/images/sitesFrontView/' + siteToAdd.cities[0].sites[0].siteId + '_' + siteToAdd.cities[0].sites[0].siteName + '_0.jpg';
                             }
-                            var site = new siteMdl(siteToAdd);
+                            let site = new siteMdl(siteToAdd);
                             site.save(function (err) {
                                 if (err) {
                                     logger.error('siteServices.addSiteToDB', err);
@@ -103,7 +104,7 @@ var addSiteToDB = function (siteToAdd, callback) {
                                     });
                                 }
                                 else {
-                                    var response = {siteId: siteToAdd.cities[0].sites[0].siteId, siteName: siteToAdd.cities[0].sites[0].siteName};
+                                    let response = {siteId: siteToAdd.cities[0].sites[0].siteId, siteName: siteToAdd.cities[0].sites[0].siteName};
                                     callback({
                                         responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
                                         responseData: response
@@ -273,8 +274,7 @@ function getNewCityId(countryName, callback) {
                 });
             }
             else {
-                var lastId = 0;
-                var cities = res.cities;
+                let lastId = 0, cities = res.cities;
                 cities.forEach(function (el) {
                     if (parseInt(el.cityId) > lastId) {
                         lastId = parseInt(el.cityId);
@@ -302,8 +302,7 @@ function getNewSiteId(countryName, cityName, callback) {
                 });
             }
             else {
-                var lastId = 0;
-                var sites = 0;
+                let lastId = 0, sites = 0;
                 res[0].cities.forEach(function(city){
                     if (city.cityName === cityName) {
                         sites = city.sites;

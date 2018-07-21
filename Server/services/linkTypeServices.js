@@ -5,11 +5,12 @@
  */
 'use strict';
 
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var linkTypeSch = require('../infra/schemas/linkTypeSchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var linkTypeMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const linkTypeSch = require('../infra/schemas/linkTypeSchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let linkTypeMdl;
 
 try {
     linkTypeMdl = connection.getConnection().model(properties.COL_LINKS_TYPES, linkTypeSch.getSchema());
@@ -19,7 +20,7 @@ catch (err) {
 }
 
 
-var getLinkTypesFromDB = function (callback) {
+const getLinkTypesFromDB = function (callback) {
     linkTypeMdl.find({})
         .exec(function (err, linkTypesRes) {
             if (err) {
@@ -37,7 +38,7 @@ var getLinkTypesFromDB = function (callback) {
         });
 };
 
-var addLinkTypeToDB = function (newLink, callback) {
+const addLinkTypeToDB = function (newLink, callback) {
     linkTypeMdl.findOne({})
         .where('type').equals(newLink.type)
         .exec(function (err, queryRes) {
