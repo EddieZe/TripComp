@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var express = require('express');
-var nodemailer = require('nodemailer');
-var router = express.Router();
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const nodemailer = require('nodemailer');
+const router = express.Router();
+const logger = require('./../../infra/winstonLogger.js');
 
 router.post('/', function (req, res) {
 

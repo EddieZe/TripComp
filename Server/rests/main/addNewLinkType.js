@@ -5,10 +5,10 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var linkTypeSrv = require('./../../services/linkTypeServices');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const linkTypeSrv = require('./../../services/linkTypeServices');
+const logger = require('./../../infra/winstonLogger.js');
 
 router.post('/', function (req, res) {
 
@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
     }
 });
 
-var validateInput = function(input){
+const validateInput = function(input){
     return input.type && input.name
 };
 

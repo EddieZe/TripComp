@@ -5,12 +5,12 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var placeSrv = require('./../../services/placeServices');
-var siteMdl = require('./../../services/siteServices');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const placeSrv = require('./../../services/placeServices');
+const siteMdl = require('./../../services/siteServices');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
 
 router.post('/', function (req, res) {
 
@@ -32,7 +32,7 @@ router.post('/', function (req, res) {
 
     function getPlaceInfoFromGoogle(placeId, callback) {
 
-        var parameters = {
+        let parameters = {
             placeid: placeId
         };
 

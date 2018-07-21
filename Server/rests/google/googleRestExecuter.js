@@ -4,15 +4,15 @@
  * Create Date:  23/11/2015
  */
 'use strict';
-var https = require('https');
-var appConsts = require('../../infra/appConstsAndProperties');
-var HttpResponseProcessor = require('./HttpResponseProcessor');
-var querystring = require('querystring');
-var logger = require('./../../infra/winstonLogger');
+const https = require('https');
+const appConsts = require('../../infra/appConstsAndProperties');
+const HttpResponseProcessor = require('./HttpResponseProcessor');
+const querystring = require('querystring');
+const logger = require('./../../infra/winstonLogger');
 
-var executeCall = function (apiName, input, callback) {
-    var parameters = input;
-    var options;
+const executeCall = function (apiName, input, callback) {
+    let parameters = input;
+    let options;
     parameters.key = appConsts.KEY;
 
     if (appConsts.IS_BEHIND_PROXY) {

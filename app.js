@@ -4,33 +4,33 @@
 * Create Date : 27-Feb-2015 
 */
 
-var express = require('express');
-var ejs = require('ejs');
-var path = require('path');
-var prop = require('./scripts/envProp');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const express = require('express');
+const ejs = require('ejs');
+const path = require('path');
+const prop = require('./scripts/envProp');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-var getCountries = require('./Server/rests/main/getCountries');
-var getCategories = require('./Server/rests/main/getCategories');
-var places = require('./Server/rests/main/getPlaces');
-var getPlaceReviews = require('./Server/rests/main/getPlaceReviews');
-var getRatingForPlace = require('./Server/rests/main/getRatingForPlace');
-var addNewSite = require('./Server/rests/main/addNewSite');
-var getTimeZones = require('./Server/rests/main/getTimeZones');
-var addNewCategory = require('./Server/rests/main/addNewCategory');
-var addNewPlaceReview = require('./Server/rests/main/addNewPlaceReview');
-var addNewPlace = require('./Server/rests/main/addNewPlace');
-var sendEmail = require('./Server/rests/main/sendEmail');
-var uploadImage = require('./Server/rests/main/uploadImage');
-var addPlacePhotoSrc = require('./Server/rests/main/addPlacePhotoSrc');
-var updateSitePhotoSrc = require('./Server/rests/main/updateSitePhotoSrc');
-var googleRests = require('./Server/rests/google/googleMain');
-var updatePlaceLinks = require('./Server/rests/main/updatePlaceLinks');
-var getLinksTypes = require('./Server/rests/main/getLinksTypes');
-var addLinkType = require('./Server/rests/main/addNewLinkType');
+const getCountries = require('./Server/rests/main/getCountries');
+const getCategories = require('./Server/rests/main/getCategories');
+const places = require('./Server/rests/main/getPlaces');
+const getPlaceReviews = require('./Server/rests/main/getPlaceReviews');
+const getRatingForPlace = require('./Server/rests/main/getRatingForPlace');
+const addNewSite = require('./Server/rests/main/addNewSite');
+const getTimeZones = require('./Server/rests/main/getTimeZones');
+const addNewCategory = require('./Server/rests/main/addNewCategory');
+const addNewPlaceReview = require('./Server/rests/main/addNewPlaceReview');
+const addNewPlace = require('./Server/rests/main/addNewPlace');
+const sendEmail = require('./Server/rests/main/sendEmail');
+const uploadImage = require('./Server/rests/main/uploadImage');
+const addPlacePhotoSrc = require('./Server/rests/main/addPlacePhotoSrc');
+const updateSitePhotoSrc = require('./Server/rests/main/updateSitePhotoSrc');
+const googleRests = require('./Server/rests/google/googleMain');
+const updatePlaceLinks = require('./Server/rests/main/updatePlaceLinks');
+const getLinksTypes = require('./Server/rests/main/getLinksTypes');
+const addLinkType = require('./Server/rests/main/addNewLinkType');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'Client/templates'));
@@ -66,7 +66,7 @@ app.use('/addLinkType', addLinkType);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });

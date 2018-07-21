@@ -10,7 +10,7 @@
      */
     module.exports = function (parseJson, callback) {
         return function (response) {
-            var responseData = "";
+            let responseData = "";
             response.setEncoding("utf8");
             response.on("data", function (chunk) {
                 responseData += chunk;

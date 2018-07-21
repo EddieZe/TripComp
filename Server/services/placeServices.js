@@ -5,11 +5,12 @@
  */
 'use strict';
 
-var properties = require('./../infra/dataBase/dbProperties');
-var logger = require('../infra/winstonLogger.js');
-var placeSch = require('../infra/schemas/PlaceSchema');
-var connection = require('./../infra/dataBase/dbConnection');
-var placeMdl;
+const properties = require('./../infra/dataBase/dbProperties');
+const logger = require('../infra/winstonLogger.js');
+const placeSch = require('../infra/schemas/PlaceSchema');
+const connection = require('./../infra/dataBase/dbConnection');
+
+let placeMdl;
 
 try {
     placeMdl = connection.getConnection().model(properties.COL_PLACES, placeSch.getSchema());
@@ -18,9 +19,9 @@ catch (err) {
     console.log('error: ' + err);
 }
 
-var getPlacesFromDB = function (location, callback) {
+const getPlacesFromDB = function (location, callback) {
     //updateSchema();
-    var USA_ID = '1011';
+    let USA_ID = '1011';
     placeMdl.find({})
         .or([{'placeLevel': 1, 'location.countryId': location.country},
             {'location.countryId': USA_ID, 'placeLevel': 2, 'location.cityId': location.city},
@@ -54,7 +55,7 @@ var getPlacesFromDB = function (location, callback) {
         );
 };
 
-var addNewPlaceToDB = function (newPlace, callback) {
+const addNewPlaceToDB = function (newPlace, callback) {
     if (!newPlace.googleInfo || !newPlace.googleInfo.googlePlaceId) {
         newPlace.googleInfo = {googlePlaceId: null};
     }
@@ -112,7 +113,7 @@ var addNewPlaceToDB = function (newPlace, callback) {
 
 };
 
-var checkIsPlaceExists = function (location, placeName, googlePlaceId, callback) {
+const checkIsPlaceExists = function (location, placeName, googlePlaceId, callback) {
     placeMdl.findOne({})
         .or([{'googleInfo.googlePlaceId': googlePlaceId},
             {'name': placeName, 'location.countryId': location.countryId, 'location.cityId': location.cityId}])
@@ -139,7 +140,7 @@ var checkIsPlaceExists = function (location, placeName, googlePlaceId, callback)
         });
 };
 
-var addPlacePhotoSrc = function (placeId, newPlacePhotoSrc, callback) {
+const addPlacePhotoSrc = function (placeId, newPlacePhotoSrc, callback) {
     placeMdl.findOne({'placeId': placeId}, function (err, place) {
         if (err) {
             logger.error('placeServices.findOneAndUpdate', err);
@@ -185,7 +186,7 @@ var addPlacePhotoSrc = function (placeId, newPlacePhotoSrc, callback) {
     })
 };
 
-var updatePlaceLinks = function (placeId, links, callback) {
+const updatePlaceLinks = function (placeId, links, callback) {
 
     placeMdl.findOne({'placeId': placeId}, function (err, place) {
         if (err) {
@@ -233,8 +234,8 @@ function updateSchema() {
             }
             else {
                 places.forEach(function (place) {
-                    var links = [];
-                    var link = {};
+                    let links = [];
+                    let link = {};
                     if (place.siteURL) {
                         link = {
                             type: "siteURL",

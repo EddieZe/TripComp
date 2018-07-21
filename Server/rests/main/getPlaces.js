@@ -5,29 +5,29 @@
  */
 'use strict';
 
-var express = require('express');
-var router = express.Router();
-var placeSrv = require('./../../services/placeServices');
-var reviewSrv = require('./../../services/reviewServices');
-var appConsts = require('./../../infra/appConstsAndProperties');
-var logger = require('./../../infra/winstonLogger.js');
+const express = require('express');
+const router = express.Router();
+const placeSrv = require('./../../services/placeServices');
+const reviewSrv = require('./../../services/reviewServices');
+const appConsts = require('./../../infra/appConstsAndProperties');
+const logger = require('./../../infra/winstonLogger.js');
 
 /* retrieve places for site. */
 router.post('/', function (req, res) {
 
-    var loc = {
+    let loc = {
         country: req.body.countryId,
         city: req.body.cityId,
         site: req.body.siteId
     };
-    var placesLst = [];
-    var i = 0;
+    let placesLst = [];
+    let i = 0;
     placeSrv.getPlacesFromDB(loc, function (dbRes) {
         if (dbRes.responseInfo.isErrorOccurred) {
             res.send(dbRes);
         }
         else if (dbRes.responseData) {
-            var numOfPlaces = dbRes.responseData.length;
+            let numOfPlaces = dbRes.responseData.length;
             numOfPlaces = numOfPlaces - 1;
             dbRes.responseData.forEach(function (place) {
                 getPlaceRating(place.placeId, function (rating) {
@@ -46,7 +46,7 @@ router.post('/', function (req, res) {
     });
 });
 
-var getPlaceRating = function (placeId, callback) {
+const getPlaceRating = function (placeId, callback) {
     reviewSrv.getPlaceRatingFromDB(placeId, function (placeRat) {
         callback(placeRat.responseData);
     });

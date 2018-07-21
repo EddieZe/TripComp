@@ -5,17 +5,17 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
-var https = require('https');
-var querystring = require('querystring');
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
+const https = require('https');
+const querystring = require('querystring');
 
 router.post('/', function (req, res) {
 
     //Prepare Input for getNearByPlaces
-    var parameters = {
+    let parameters = {
         maxwidth: req.body.maxWidth,
         photoreference: req.body.photoRef
     };
@@ -28,7 +28,7 @@ router.post('/', function (req, res) {
             Host: appConsts.GOOGLE_HOST
         }
     };*/
-    var options = {
+    let options = {
         host: appConsts.PROXY_HOST,
         port: appConsts.PROXY_PORT,
         url: 'http://www.google.com/images/srpr/logo3w.png',
@@ -37,13 +37,13 @@ router.post('/', function (req, res) {
         }
     };
 
-    var fs = require('fs'),
+    const fs = require('fs'),
         request = require('request');
 
-    var proxyUrl = 'https://' + appConsts.PROXY_HOST + ':' + appConsts.PROXY_PORT;
-    var proxiedRequest = request.defaults({'proxy': proxyUrl});
+    const proxyUrl = 'https://' + appConsts.PROXY_HOST + ':' + appConsts.PROXY_PORT;
+    const proxiedRequest = request.defaults({'proxy': proxyUrl});
 
-    var download = function (uri, filename, callback) {
+    const download = function (uri, filename, callback) {
         proxiedRequest.get(uri, function (err, res, body) {
 
             if (err) {

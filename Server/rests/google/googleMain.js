@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
-var getGooglePlaceInfo = require('./getGooglePlaceInfo');
-var getGeocodeByAddress = require('./getGeocodeByAddress');
-var getNearByPlacesInfo = require('./getNearByPlacesInfo');
-var searchNearByPlaces = require('./searchNearByPlaces');
-//var getPlacePhoto = require('./getPlacePhoto');
-var checkAndGetPlaceInfo = require('./checkAndGetPlaceInfo');
-var getTimeZoneByLocation = require('./getTimeZoneByLocation');
+const getGooglePlaceInfo = require('./getGooglePlaceInfo');
+const getGeocodeByAddress = require('./getGeocodeByAddress');
+const getNearByPlacesInfo = require('./getNearByPlacesInfo');
+const searchNearByPlaces = require('./searchNearByPlaces');
+//const getPlacePhoto = require('./getPlacePhoto');
+const checkAndGetPlaceInfo = require('./checkAndGetPlaceInfo');
+const getTimeZoneByLocation = require('./getTimeZoneByLocation');
 
 
 app.use('/getGooglePlaceInfo', getGooglePlaceInfo);

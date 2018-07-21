@@ -5,16 +5,16 @@
  */
 'use strict';
 
-var express = require('express');
-var appConsts = require('../../infra/appConstsAndProperties');
-var googleExecuter = require('./googleRestExecuter');
-var router = express.Router();
-var getTimeZoneByLocation = require('./getTimeZoneByLocation');
+const express = require('express');
+const appConsts = require('../../infra/appConstsAndProperties');
+const googleExecuter = require('./googleRestExecuter');
+const router = express.Router();
+const getTimeZoneByLocation = require('./getTimeZoneByLocation');
 
 
 router.post('/', function (req, res) {
 
-    var parameters = {
+    let parameters = {
         address: req.body.address
     };
 
@@ -30,10 +30,10 @@ router.post('/', function (req, res) {
         }
     });
 
-    var prepareOutput = function (results) {
-        var locationInfo = [];
+    const prepareOutput = function (results) {
+        let locationInfo = [];
         results.forEach(function (res) {
-            var loc = {
+            let loc = {
                 types: res.types,
                 formattedAddress: (res.formatted_address) ? res.formatted_address : res.vicinity,
                 location: res.geometry.location,
@@ -64,7 +64,7 @@ router.post('/', function (req, res) {
     }
 });
 
-var getTimeZone = function (parameters, callback) {
+const getTimeZone = function (parameters, callback) {
     parameters.timestamp = 1331161200;
     googleExecuter(appConsts.GOOGLE_APIS.GET_TIME_ZONE_BY_LOCATION, parameters, function (response) {
         if (response.responseInfo && response.responseInfo.isErrorOccurred) {
@@ -76,21 +76,20 @@ var getTimeZone = function (parameters, callback) {
     });
 };
 
-var prepareOutputForTimeZone = function (result) {
-    var timeZone = {
+const prepareOutputForTimeZone = function (result) {
+    return {
         timeZoneName: result.timeZoneName,
         timeZoneId: result.timeZoneId,
         rawOffset: result.rawOffset,
         dstOffset: result.dstOffset,
         formatedTimeZone: "(UTC" + (result.rawOffset !== 0 ? prepareFormattedTimeZone(result.rawOffset) : "") + ") " + result.timeZoneName
     };
-    return timeZone
 };
 
-var prepareFormattedTimeZone = function (rawOffset) {
-    var time = rawOffset / 3600;
-    var hour = Math.floor(Math.abs(time));
-    var min = Math.floor((Math.abs(time) * 60) % 60);
+const prepareFormattedTimeZone = function (rawOffset) {
+    let time = rawOffset / 3600;
+    let hour = Math.floor(Math.abs(time));
+    let min = Math.floor((Math.abs(time) * 60) % 60);
     return time < 0 ? "-" : "+" + (hour < 10 ? "0" : "") + hour + ":" + (min < 10 ? "0" : "") + min;
 };
 
