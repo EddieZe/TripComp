@@ -37,7 +37,7 @@ module.exports = function (grunt) {
                     include: './routes.js',
                     out: 'target/tmp/Client/TripComp.js',
                     optimize: 'none',
-                    error: function(done, err) {
+                    error: function (done, err) {
                         grunt.log.warn(err);
                         done();
                     }
@@ -64,12 +64,12 @@ module.exports = function (grunt) {
                     include: './routes.js',
                     out: 'target/tmp/Client/TripComp.min.js',
                     optimize: 'uglify2',
-                    uglify2: { mangle: false},
+                    uglify2: {mangle: false},
                     done: function (done, build) {
                         grunt.file.write('target/done-build.txt', build);
                         done();
                     },
-                    error: function(done, err) {
+                    error: function (done, err) {
                         grunt.log.warn(err);
                         done();
                     }
