@@ -2,7 +2,7 @@
  * Created by EDDIEZ on 20/10/2015.
  */
 
-var require = {
+const require = {
     baseUrl: "/",
     // alias libraries paths
     paths: {
