@@ -5,16 +5,16 @@
  */
 'use strict';
 
-const os = require('os');
-const winston = require('winston');
-const appConsts = require('./appConstsAndProperties');
+var os = require('os');
+var winston = require('winston');
+var appConsts = require('./appConstsAndProperties');
 
-const debug_Status = {
+var debug_Status = {
     START: 'START',
     END: 'END'
 };
 
-const logger = new (winston.Logger)({
+/*var logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
             name: 'node_log',
@@ -22,39 +22,33 @@ const logger = new (winston.Logger)({
             json: false,
             prettyPrint: true,
             formatter: formatter
-        })/*,
-         new (winston.transports.File)({
-         name: 'req_res_log',
-         filename: './logs/req_resLogger.log',
-         json: false,
-         formatter: formatter
-         })*/
+        })
     ],
     exitOnError: false
-});
+});*/
 
 function debug(path, status) {
     if (appConsts.IS_LOGGER_ON) {
-        logger.info(path + ' - ' + status);
+        //logger.info(path + ' - ' + status);
     }
 }
 
 function info(path, msg) {
     if (appConsts.IS_LOGGER_ON) {
-        logger.info(path + ' - ' + msg);
+        //logger.info(path + ' - ' + msg);
     }
 }
 
 function error(path, err) {
     if (appConsts.IS_LOGGER_ON) {
-        logger.error(path + ' - ' + err);
+        //logger.error(path + ' - ' + err);
     }
 }
 
 function formatter(args) {
 
-    const nowDate = new Date();
-    const date = nowDate.toLocaleDateString() + ' ' + nowDate.toLocaleTimeString() + ' ' + nowDate.getMilliseconds();
+    var nowDate = new Date();
+    var date = nowDate.toLocaleDateString() + ' ' + nowDate.toLocaleTimeString() + ' ' + nowDate.getMilliseconds();
     return '<<' + args.level.toUpperCase() + '>> <<' + date + '>> <<' + os.hostname() + '>> ' + args.message;
 
 }

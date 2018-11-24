@@ -18,8 +18,8 @@ module.exports = function (grunt) {
         requirejs: {
             compile: {
                 options: {
-                    baseUrl: '/TripComp/Client/src/',
-                    mainConfigFile: 'Client/resources/paths.js',
+                    baseUrl: './Client/src/',
+                    mainConfigFile: './Client/resources/paths.js',
                     paths: {
                         "jquery": "empty:",
                         "angular": "empty:",
@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                         "bootstrap-dialog": "empty:"
                     },
                     include: './routes.js',
-                    out: 'target/tmp/Client/TripComp.js',
+                    out: './target/tmp/Client/TripComp.js',
                     optimize: 'none',
                     error: function (done, err) {
                         grunt.log.warn(err);
@@ -45,8 +45,8 @@ module.exports = function (grunt) {
             },
             compileForProduction: {
                 options: {
-                    baseUrl: '/TripComp/Client/src/',
-                    mainConfigFile: 'Client/resources/paths.js',
+                    baseUrl: './Client/src/',
+                    mainConfigFile: './Client/resources/paths.js',
                     paths: {
                         "jquery": "empty:",
                         "angular": "empty:",
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
                         "bootstrap-dialog": "empty:"
                     },
                     include: './routes.js',
-                    out: 'target/tmp/Client/TripComp.min.js',
+                    out: './target/tmp/Client/TripComp.min.js',
                     optimize: 'uglify2',
                     uglify2: {mangle: false},
                     done: function (done, build) {
