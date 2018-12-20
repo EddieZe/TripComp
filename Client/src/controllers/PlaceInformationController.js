@@ -202,7 +202,7 @@ define(['./ctrlModule'], function (module) {
 
         $scope.uploadFiles = function () {
             var fileName;
-            if (place.imgSource.length === 1 && place.imgSource[0].source === "images/placeIcon.jpg") {
+            if (place.imgSource.length === 1 && place.imgSource[0].source === "resources/images/placeIcon.jpg") {
                 fileName = $scope.place.placeId + '_0.jpg'
             }
             else {

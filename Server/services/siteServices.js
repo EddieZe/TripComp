@@ -255,7 +255,7 @@ function getNewCountryId(callback) {
             else {
                 callback({
                     responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
-                    responseData: parseInt(countryRes.countryId) + 1
+                    responseData: countryRes ? parseInt(countryRes.countryId) + 1 : 0
                 });
             }
         })

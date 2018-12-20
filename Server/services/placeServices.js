@@ -158,7 +158,7 @@ const addPlacePhotoSrc = function (placeId, newPlacePhotoSrc, callback) {
         }
         else {
             if (place.imgSource[0]) {
-                if (place.imgSource[0].source === "images/placeIcon.jpg") {
+                if (place.imgSource[0].source === "resources/images/placeIcon.jpg") {
                     place.imgSource[0].source = newPlacePhotoSrc.source;
                 }
                 else {
@@ -304,7 +304,7 @@ function getNewPlaceId(callback) {
                 });
             }
             else {
-                callback(parseInt(placeRes.placeId) + 1);
+                callback( placeRes ? parseInt(placeRes.placeId) + 1 : 0);
             }
         })
 

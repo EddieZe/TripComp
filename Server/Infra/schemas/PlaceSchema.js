@@ -16,7 +16,7 @@ const DayOpenHours = new Schema({
 
 const ImageSch = new Schema({
     type: {type: String, default: "LOCAL"},
-    source: {type: String, default: "images/placeIcon.jpg"},
+    source: {type: String, default: "resources/images/placeIcon.jpg"},
     added_at: {type: Date}
 });
 
