@@ -14,8 +14,7 @@ let linkTypeMdl;
 
 try {
     linkTypeMdl = connection.getConnection().model(properties.COL_LINKS_TYPES, linkTypeSch.getSchema());
-}
-catch (err) {
+} catch (err) {
     console.log('error: ' + err);
 }
 
@@ -53,13 +52,11 @@ const addLinkTypeToDB = function (newLink, callback) {
                 callback({
                     responseInfo: {isErrorOccurred: true, responseMsg: 'Such Link Type already exist in the DB'}
                 });
-            }
-            else {
+            } else {
                 getLinkTypeId(function (newId) {
                     if (newId.responseInfo.isErrorOccurred) {
                         callback(newId);
-                    }
-                    else {
+                    } else {
                         newLink.typeId = newId.responseData;
                         linkTypeMdl(newLink).save(function (err) {
                             if (err) {
@@ -69,8 +66,7 @@ const addLinkTypeToDB = function (newLink, callback) {
                                         isErrorOccurred: true, responseMsg: 'Error Occurred', errorData: err
                                     }
                                 });
-                            }
-                            else {
+                            } else {
                                 callback({
                                     responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
                                     responseData: newLink
@@ -95,7 +91,7 @@ function getLinkTypeId(callback) {
             }
             callback({
                 responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
-                responseData: parseInt(linkTypeRes.typeId) + 1
+                responseData: linkTypeRes ? parseInt(linkTypeRes.typeId) + 1 : 0
             });
         })
 }

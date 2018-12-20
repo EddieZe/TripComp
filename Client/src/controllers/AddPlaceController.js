@@ -7,22 +7,21 @@ define(['./ctrlModule'], function (module) {
         var googleAPIToken = 'AIzaSyC5OiqUQQYgdW7UtyRugpEKHWQN5GknOQE';
         var placeCategories = {
             GENERAL: 0,
-            HIKING: 1,
-            RESTAURANT: 2,
-            HOTEL: 3,
-            SKI: 4,
-            CAR_RENTAL: 5,
-            SHOPPING: 6,
-            CAFE: 7,
-            MUSEUM: 8,
+            HIKING: 15,
+            RESTAURANT: 1,
+            HOTEL: 7,
+            SKI: 8,
+            CAR_RENTAL: 2,
+            SHOPPING: 3,
+            CAFE: 12,
+            MUSEUM: 4,
             BAR: 9,
-            PARK: 10,
-            HISTORY: 11,
-            NIGHTCLUB: 12,
-            GYM: 13,
+            PARK: 5,
+            HISTORY: 6,
+            NIGHTCLUB: 10,
+            GYM: 11,
             DIVING: 14,
-            ENTERTAINMENT: 15
-
+            ENTERTAINMENT: 13
         };
 
         $scope.newPlaceInfo = {};

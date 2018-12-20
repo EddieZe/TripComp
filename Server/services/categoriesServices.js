@@ -100,7 +100,7 @@ function getNewCategoryId(callback) {
             }
             callback({
                 responseInfo: {isErrorOccurred: false, responseMsg: 'Success'},
-                responseData: parseInt(categoryRes.categoryId) + 1
+                responseData: categoryRes ? parseInt(categoryRes.categoryId) + 1 : 0
             });
         })
 }
