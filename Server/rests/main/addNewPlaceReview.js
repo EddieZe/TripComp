@@ -35,7 +35,7 @@ router.post('/', function (req, res) {
 });
 
 const validateInput = function (input) {
-    return input && input.placeId && input.authorName
+    return input && input.placeId > -1 && input.authorName
 };
 
 function execute(input, callback) {
