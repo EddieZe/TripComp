@@ -47,6 +47,9 @@ router.post('/', function (req, res) {
                 if (addressComp.types.indexOf("locality") !== -1) {
                     loc.city = addressComp.long_name
                 }
+                else if(addressComp.types.indexOf("administrative_area_level_2") !== -1){
+                    loc.city = addressComp.long_name
+                }
                 if (addressComp.types.indexOf("administrative_area_level_1") !== -1) {
                     loc.state = addressComp.long_name
                 }
